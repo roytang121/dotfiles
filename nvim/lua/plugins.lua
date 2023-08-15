@@ -1,11 +1,11 @@
 return {
-	{ 
-        "echasnovski/mini.nvim", 
-        version = false,
-        config = function()
-            require('config.mini')
-        end
-    },
+	{
+		"echasnovski/mini.nvim",
+		version = false,
+		config = function()
+			require("config.mini")
+		end,
+	},
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
@@ -19,14 +19,27 @@ return {
 		end,
 		cmd = "Telescope",
 	},
-    {
-        "alexghergh/nvim-tmux-navigation",
-        config = function()
-            require("config.tmux_navigation")
-        end
-    },
+	{
+		"alexghergh/nvim-tmux-navigation",
+		config = function()
+			require("config.tmux_navigation")
+		end,
+	},
 	{
 		"folke/tokyonight.nvim",
+	},
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		priority = 1000,
+		config = function()
+			require("catppuccin").setup({
+				transparent_background = true,
+				dim_inactive = {
+					enabled = true,
+				},
+			})
+		end,
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",

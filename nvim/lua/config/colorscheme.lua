@@ -3,5 +3,6 @@ vim.opt.termguicolors = true
 vim.opt.background = 'dark'
 
 -- cmd [[colorscheme gruvbox-material]]
-vim.cmd [[colorscheme tokyonight]]
+-- vim.cmd [[colorscheme tokyonight]]
+vim.cmd [[colorscheme catppuccin-macchiato]]
 -- cmd [[colorscheme base16-gruvbox-light-hard]]
