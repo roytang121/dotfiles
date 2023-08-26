@@ -27,6 +27,7 @@
   "nvim-treesitter": { "branch": "master", "commit": "d92bfe2cbd86a9c10d814e38ecbe2fb7442da209" },
   "onedark.nvim": { "branch": "master", "commit": "7bd3558c17045b95c961d28861c1b3bd9bdc992a" },
   "plenary.nvim": { "branch": "master", "commit": "267282a9ce242bbb0c5dc31445b6d353bed978bb" },
+  "rainbow-delimiters.nvim": { "branch": "master", "commit": "f30dd6c58eddca41ed9a9b112aa4be4828939c4d" },
   "telescope.nvim": { "branch": "master", "commit": "2d92125620417fbea82ec30303823e3cd69e90e8" },
   "tokyonight.nvim": { "branch": "main", "commit": "1ee11019f8a81dac989ae1db1a013e3d582e2033" },
   "vim-fugitive": { "branch": "master", "commit": "b3b838d690f315a503ec4af8c634bdff3b200aaf" },
