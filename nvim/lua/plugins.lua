@@ -25,21 +25,61 @@ return {
 			require("config.tmux_navigation")
 		end,
 	},
+	-- Set lualine as statusline
 	{
-		"folke/tokyonight.nvim",
+		"nvim-lualine/lualine.nvim",
+		opts = {
+			options = {
+				icons_enabled = false,
+				component_separators = "|",
+				section_separators = "",
+			},
+		},
 	},
+	{
+		-- Add indentation guides even on blank lines
+		"lukas-reineke/indent-blankline.nvim",
+		-- Enable `lukas-reineke/indent-blankline.nvim`
+		-- See `:help indent_blankline.txt`
+		opts = {
+			char = "┊",
+			show_trailing_blankline_indent = false,
+			show_current_context = true,
+			show_current_context_start = true,
+		},
+	},
+	-- colorschemes
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
 		priority = 1000,
 		config = function()
 			require("catppuccin").setup({
-				transparent_background = true,
-				dim_inactive = {
-					enabled = true,
+				integrations = {
+					cmp = true,
+					nvimtree = true,
+					treesitter = true,
+					mini = true,
 				},
+				transparent_background = true,
+				-- dim_inactive = {
+				-- 	enabled = true,
+				-- },
 			})
 		end,
+	},
+	{
+		"navarasu/onedark.nvim",
+		opts = {
+			style = "dark",
+			transparent = true,
+		},
+	},
+	{
+		"folke/tokyonight.nvim",
+		opts = {
+			transparent = true,
+		},
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -50,24 +90,44 @@ return {
 		end,
 	},
 	{
-		"williamboman/mason.nvim",
-		config = function()
-			require("config.mason")
-		end,
-	},
-	{
 		"williamboman/mason-lspconfig.nvim",
+		dependencies = {
+			{
+				"williamboman/mason.nvim",
+				config = function()
+					require("config.mason")
+				end,
+			},
+		},
+		opts = {},
 	},
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
-			"hrsh7th/nvim-cmp",
 			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-cmdline",
+			"hrsh7th/nvim-cmp",
 			"saadparwaiz1/cmp_luasnip",
 			"L3MON4D3/LuaSnip",
+			"rafamadriz/friendly-snippets",
 		},
 		config = function()
 			require("config.lspconfig")
+		end,
+	},
+	{
+		"mfussenegger/nvim-dap",
+		dependencies = {
+			"rcarriga/nvim-dap-ui",
+			"williamboman/mason.nvim",
+			"jay-babu/mason-nvim-dap.nvim",
+			-- own debuggers
+			"mfussenegger/nvim-dap-python",
+		},
+		config = function()
+			require("config.nvim-dap")
 		end,
 	},
 	{
@@ -81,5 +141,19 @@ return {
 		config = function()
 			require("config.nvim_tree")
 		end,
+	},
+	{
+		"tenfyzhong/autoflake.vim",
+	},
+	-- gits
+	{
+		"tpope/vim-fugitive",
+	},
+	{
+		"tpope/vim-rhubarb",
+	},
+	{
+		"sindrets/diffview.nvim",
+		opts = {},
 	},
 }
