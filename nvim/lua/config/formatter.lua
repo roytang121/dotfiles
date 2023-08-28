@@ -17,6 +17,9 @@ require("formatter").setup {
     markdown = {
         require("formatter.filetypes.markdown").prettier,
     },
+    json = {
+        require("formatter.filetypes.json").prettier,
+    },
     lua = {
       -- "formatter.filetypes.lua" defines default configurations for the
       -- "lua" filetype

@@ -183,4 +183,14 @@ return {
         'sindrets/diffview.nvim',
         opts = {},
     },
+    {
+        'stevearc/overseer.nvim',
+        dependencies = {
+            {
+                'stevearc/dressing.nvim',
+                opts = {},
+            },
+        },
+        opts = {},
+    },
 }
