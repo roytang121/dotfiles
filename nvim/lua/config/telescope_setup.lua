@@ -6,5 +6,5 @@ vim.keymap.set('n', '<leader>fw', builtin.lsp_dynamic_workspace_symbols, {})
 vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>co', builtin.colorscheme, {})
-vim.keymap.set('n', '<leader><space>', builtin.buffers, {})
+vim.keymap.set('n', '<leader><space>', builtin.commands, {})
 

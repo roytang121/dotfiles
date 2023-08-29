@@ -194,7 +194,9 @@ return {
                 opts = {},
             },
         },
-        opts = {},
+        config = function()
+            require 'config.overseer'
+        end
     },
     {
         'folke/which-key.nvim',

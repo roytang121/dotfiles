@@ -22,7 +22,7 @@ require("mini.fuzzy").setup()
 --         delay = 0,
 --     }
 -- })
-require('mini.indentscope').gen_animation.none()
+-- require('mini.indentscope').gen_animation.none()
 require("mini.bracketed").setup()
 require("mini.pairs").setup()
 
