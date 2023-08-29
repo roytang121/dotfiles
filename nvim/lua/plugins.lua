@@ -86,7 +86,7 @@ return {
         build = ':TSUpdate',
         event = 'BufReadPost',
         dependencies = {
-            'nvim-treesitter/nvim-treesitter-textobjects'
+            'nvim-treesitter/nvim-treesitter-textobjects',
         },
         config = function()
             require 'config.treesitter'
@@ -194,6 +194,15 @@ return {
                 opts = {},
             },
         },
+        opts = {},
+    },
+    {
+        'folke/which-key.nvim',
+        event = 'VeryLazy',
+        init = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+        end,
         opts = {},
     },
 }
