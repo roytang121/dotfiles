@@ -1,4 +1,4 @@
--- luasnip setuplspcon
+-- luasnip 
 local luasnip = require("luasnip")
 require('luasnip.loaders.from_vscode').lazy_load()
 luasnip.config.setup {}
@@ -58,13 +58,30 @@ local servers = { "clangd", "rust_analyzer", "pyright", "tsserver", "marksman" }
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup({
 		-- on_attach = my_custom_on_attach,
+        on_attach = function(client, bufnr)
+            local bufopts = { noremap=true, silent=true, buffer=bufnr }
+            -- nnoremap <silent> <leader>dn :lua require('dap-python').test_method()<CR>
+            -- nnoremap <silent> <leader>df :lua require('dap-python').test_class()<CR>
+            -- vnoremap <silent> <leader>ds <ESC>:lua require('dap-python').debug_selection()<CR>
+            vim.keymap.set("n", "<leader>dm", require('dap-python').test_method, bufopts)
+            vim.keymap.set("n", "<leader>dc", require('dap-python').test_class, bufopts)
+        end,
 		capabilities = capabilities,
 	})
 end
 
 -- Setup language servers.
 local lspconfig = require("lspconfig")
-lspconfig.pyright.setup({})
+lspconfig.pyright.setup({
+    on_attach = function(client, bufnr)
+        local bufopts = { noremap=true, silent=true, buffer=bufnr }
+        -- nnoremap <silent> <leader>dn :lua require('dap-python').test_method()<CR>
+        -- nnoremap <silent> <leader>df :lua require('dap-python').test_class()<CR>
+        -- vnoremap <silent> <leader>ds <ESC>:lua require('dap-python').debug_selection()<CR>
+        vim.keymap.set("n", "<leader>dm", require('dap-python').test_method, bufopts)
+        vim.keymap.set("n", "<leader>dc", require('dap-python').test_class, bufopts)
+    end
+})
 lspconfig.tsserver.setup({})
 lspconfig.rust_analyzer.setup({
 	-- Server-specific settings. See `:help lspconfig-setup`
