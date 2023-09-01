@@ -54,7 +54,7 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 local lspconfig = require("lspconfig")
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { "clangd", "rust_analyzer", "pyright", "tsserver", "marksman" }
+local servers = { "clangd", "rust_analyzer", "pyright", "tsserver", "marksman", "lua_ls" }
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup({
 		-- on_attach = my_custom_on_attach,
@@ -90,6 +90,7 @@ lspconfig.rust_analyzer.setup({
 	},
 })
 lspconfig.marksman.setup({})
+lspconfig.lua_ls.setup({})
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions

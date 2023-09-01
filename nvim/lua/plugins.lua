@@ -1,4 +1,5 @@
 return {
+    { "folke/neodev.nvim", opts = {} },
     {
         'echasnovski/mini.nvim',
         version = false,
@@ -142,6 +143,8 @@ return {
             'saadparwaiz1/cmp_luasnip',
             'L3MON4D3/LuaSnip',
             'rafamadriz/friendly-snippets',
+            -- java
+            'mfussenegger/nvim-jdtls',
         },
         config = function()
             require 'config.lspconfig'

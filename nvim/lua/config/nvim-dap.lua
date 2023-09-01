@@ -52,7 +52,7 @@ dapui.setup({
 vim.keymap.set("n", "dt", dapui.toggle, { desc = "Debug: See last session result." })
 
 dap.listeners.after.event_initialized["dapui_config"] = dapui.open
--- dap.listeners.before.event_terminated["dapui_config"] = dapui.close
--- dap.listeners.before.event_exited["dapui_config"] = dapui.close
+dap.listeners.before.event_terminated["dapui_config"] = dapui.close
+dap.listeners.before.event_exited["dapui_config"] = dapui.close
 
-require("dap-python").setup()
+require('dap-python').setup()
