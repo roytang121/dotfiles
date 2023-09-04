@@ -1,5 +1,5 @@
 return {
-    { "folke/neodev.nvim", opts = {} },
+    { 'folke/neodev.nvim', opts = {} },
     {
         'echasnovski/mini.nvim',
         version = false,
@@ -11,6 +11,7 @@ return {
         'nvim-telescope/telescope.nvim',
         dependencies = {
             'nvim-lua/plenary.nvim',
+            'nvim-telescope/telescope-file-browser.nvim',
         },
         init = function()
             require 'config.telescope_setup'
@@ -19,6 +20,22 @@ return {
             require 'config.telescope'
         end,
         cmd = 'Telescope',
+    },
+    -- {
+    --     'akinsho/toggleterm.nvim',
+    --     version = '*',
+    --     config = function()
+    --         require 'config.toggleterm'
+    --     end,
+    -- },
+    {
+        'EthanJWright/vs-tasks.nvim',
+        dependencies = {
+            'nvim-lua/popup.nvim',
+        },
+        config = function()
+            require('vstask').setup {}
+        end,
     },
     {
         'alexghergh/nvim-tmux-navigation',
@@ -79,7 +96,7 @@ return {
     {
         'folke/tokyonight.nvim',
         opts = {
-            transparent = true,
+            transparent = false,
         },
     },
     {
@@ -199,7 +216,7 @@ return {
         },
         config = function()
             require 'config.overseer'
-        end
+        end,
     },
     {
         'folke/which-key.nvim',
