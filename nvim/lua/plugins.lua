@@ -55,6 +55,12 @@ return {
         },
     },
     {
+        'akinsho/bufferline.nvim',
+        version = '*',
+        dependencies = 'nvim-tree/nvim-web-devicons',
+        opts = {},
+    },
+    {
         -- Add indentation guides even on blank lines
         'lukas-reineke/indent-blankline.nvim',
         -- Enable `lukas-reineke/indent-blankline.nvim`
@@ -109,6 +115,10 @@ return {
         config = function()
             require 'config.treesitter'
         end,
+    },
+    {
+        'andymass/vim-matchup',
+        opts = {},
     },
     {
         'HiPhish/rainbow-delimiters.nvim',
@@ -201,6 +211,12 @@ return {
     },
     {
         'tpope/vim-rhubarb',
+    },
+    {
+        'lewis6991/gitsigns.nvim',
+        config = function ()
+            require("config.gitsigns")
+        end
     },
     {
         'sindrets/diffview.nvim',
