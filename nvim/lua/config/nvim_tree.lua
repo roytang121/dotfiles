@@ -1,7 +1,12 @@
 require('nvim-tree').setup {
     filters = {
-        dotfiles = false,
+        dotfiles = true,
     },
+    actions = {
+        open_file = {
+            quit_on_open = true,
+        }
+    }
 }
 
 local api = require 'nvim-tree.api'
