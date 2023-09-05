@@ -21,6 +21,7 @@ local config = {
         'java.base/java.util=ALL-UNNAMED',
         '--add-opens',
         'java.base/java.lang=ALL-UNNAMED',
+        '-javaagent:/Users/roytang/meili/roycy.tang_dacs_at_okg.com/134/Documents/dotfiles/nvim/ftplugin/lib/lombok.jar',
 
         '-jar',
         '/Users/roytang/meili/roycy.tang_dacs_at_okg.com/134/Documents/eclipse-jdt/plugins/org.eclipse.equinox.launcher_1.6.500.v20230717-2134.jar',
