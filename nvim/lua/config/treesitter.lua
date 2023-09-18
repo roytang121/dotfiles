@@ -1,6 +1,9 @@
 require('nvim-treesitter.configs').setup {
     auto_install = true,
-    highlight = { enable = true },
+    highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = false,
+    },
     indent = { enable = true },
     incremental_selection = {
         enable = true,
@@ -33,7 +36,7 @@ require('nvim-treesitter.configs').setup {
             },
             selection_modes = {
                 ['@parameter.outer'] = 'v', -- charwise
-                ['@function.outer'] = 'V', -- linewise
+                ['@function.outer'] = 'V',  -- linewise
                 ['@class.outer'] = '<c-v>', -- blockwise
             },
         },
@@ -47,3 +50,8 @@ require('nvim-treesitter.configs').setup {
     matchup = { enable = true, include_match_words = true, enable_quotes = true },
     autotag = { enable = true },
 }
+-- enable folding
+vim.wo.foldmethod = 'expr'
+vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.wo.foldlevel = 99
+
