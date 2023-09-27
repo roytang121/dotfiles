@@ -1,5 +1,8 @@
 syntax on
 
+background=dark
+colorschem evening
+
 call plug#begin()
 
 Plug 'tpope/vim-surround'

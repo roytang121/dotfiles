@@ -18,6 +18,9 @@ Plug 'tpope/vim-commentary'
 set commentary
 Plug 'chrisbra/matchit'
 set matchit
+Plug 'preservim/nerdtree'
+set nerdtree
+
 "quickscope
 let g:qs_primary_color = '#ffffff' 
 let g:qs_secondary_color = '#bbbbbb'
