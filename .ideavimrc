@@ -1,0 +1,58 @@
+source ~/.vimrc
+nnoremap <SPACE> <Nop>
+let mapleader ="\<Space>"
+
+set nu
+set showcmd
+set showmode
+set hlsearch
+set ignorecase
+set smartcase
+set scrolloff=3
+set relativenumber
+
+"plugins
+Plug 'tpope/vim-surround'
+set surround
+Plug 'tpope/vim-commentary'
+set commentary
+Plug 'chrisbra/matchit'
+set matchit
+Plug 'preservim/nerdtree'
+set nerdtree
+
+"quickscope
+let g:qs_primary_color = '#ffffff' 
+let g:qs_secondary_color = '#bbbbbb'
+set quickscope
+
+"enable idea vim overrides
+set ideajoin
+set ideamarks
+
+"navigations
+map <c-h> <c-w>h
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+
+" Go to tab by number
+noremap <leader>1 1gt
+noremap <leader>2 2gt
+noremap <leader>3 3gt
+noremap <leader>4 4gt
+noremap <leader>5 5gt
+noremap <leader>6 6gt
+noremap <leader>7 7gt
+noremap <leader>8 8gt
+noremap <leader>9 9gt
+noremap <leader>0 :tablast<cr>
+
+nnoremap <leader>ff :action GotoFile<CR>
+nnoremap <leader>fs :action FileStructurePopup<CR>
+nnoremap <leader>fw :action GotoSymbol<CR>
+nnoremap <leader>fr :action FindUsages<CR>
+map <leader>r <Action>(Refactorings.QuickListPopupAction)
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gd :action GotoDeclaration<CR>
+
