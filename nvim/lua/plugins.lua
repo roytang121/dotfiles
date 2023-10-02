@@ -147,18 +147,18 @@ return {
     --         }
     --     end,
     -- },
-    {
-        'williamboman/mason-lspconfig.nvim',
-        dependencies = {
-            {
-                'williamboman/mason.nvim',
-                config = function()
-                    require 'config.mason'
-                end,
-            },
-        },
-        opts = {},
-    },
+    -- {
+    --     'williamboman/mason-lspconfig.nvim',
+    --     dependencies = {
+    --         {
+    --             'williamboman/mason.nvim',
+    --             config = function()
+    --                 require 'config.mason'
+    --             end,
+    --         },
+    --     },
+    --     opts = {},
+    -- },
     {
         'neovim/nvim-lspconfig',
         dependencies = {
@@ -178,17 +178,31 @@ return {
         end,
     },
     {
+        'j-hui/fidget.nvim',
+        tag = 'legacy',
+        event = 'LspAttach',
+        opts = {
+            -- options
+        },
+    },
+    {
         'mfussenegger/nvim-dap',
         dependencies = {
             'rcarriga/nvim-dap-ui',
-            'williamboman/mason.nvim',
-            'jay-babu/mason-nvim-dap.nvim',
+            -- 'williamboman/mason.nvim',
+            -- 'jay-babu/mason-nvim-dap.nvim',
             -- own debuggers
             'mfussenegger/nvim-dap-python',
         },
         config = function()
             require 'config.nvim-dap'
         end,
+    },
+    {
+        'simrat39/rust-tools.nvim',
+        dependencies = {
+            'rust-lang/rust.vim',
+        },
     },
     {
         'mhartington/formatter.nvim',
@@ -214,9 +228,9 @@ return {
     },
     {
         'lewis6991/gitsigns.nvim',
-        config = function ()
-            require("config.gitsigns")
-        end
+        config = function()
+            require 'config.gitsigns'
+        end,
     },
     {
         'sindrets/diffview.nvim',

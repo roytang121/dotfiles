@@ -52,9 +52,10 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 local lspconfig = require("lspconfig")
-
+--
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { "clangd", "rust_analyzer", "pyright", "tsserver", "marksman", "lua_ls" }
+-- local servers = { "clangd", "rust_analyzer", "pyright", "tsserver", "marksman", "lua_ls" }
+local servers = { "clangd", "pyright", "tsserver", "marksman", "lua_ls" }
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup({
 		-- on_attach = my_custom_on_attach,
@@ -83,14 +84,27 @@ lspconfig.pyright.setup({
     end
 })
 lspconfig.tsserver.setup({})
-lspconfig.rust_analyzer.setup({
-	-- Server-specific settings. See `:help lspconfig-setup`
-	settings = {
-		["rust-analyzer"] = {},
-	},
-})
+-- lspconfig.rust_analyzer.setup({
+-- 	-- Server-specific settings. See `:help lspconfig-setup`
+-- 	settings = {
+-- 		["rust-analyzer"] = {},
+-- 	},
+-- })
 lspconfig.marksman.setup({})
 lspconfig.lua_ls.setup({})
+
+local rt = require("rust-tools")
+
+rt.setup({
+  server = {
+    on_attach = function(_, bufnr)
+      -- Hover actions
+      vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+      -- Code action groups
+      vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+    end,
+  },
+})
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
