@@ -257,4 +257,10 @@ return {
         end,
         opts = {},
     },
+    {
+        'github/copilot.vim',
+        cnofig = function ()
+            require 'config.copilot'
+        end
+    }
 }

@@ -24,3 +24,8 @@ vim.o.completeopt = "menuone,noselect"
 -- Keep signcolumn on by default
 vim.wo.signcolumn = "yes"
 
+-- copilot settings override
+vim.g.copilot_assume_mapped = true
+vim.g.copilot_no_tab_map = true
+vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+
