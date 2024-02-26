@@ -12,6 +12,7 @@ return {
         dependencies = {
             'nvim-lua/plenary.nvim',
             'nvim-telescope/telescope-file-browser.nvim',
+            { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }
         },
         init = function()
             require 'config.telescope_setup'
@@ -21,13 +22,13 @@ return {
         end,
         cmd = 'Telescope',
     },
-    -- {
-    --     'akinsho/toggleterm.nvim',
-    --     version = '*',
-    --     config = function()
-    --         require 'config.toggleterm'
-    --     end,
-    -- },
+    {
+        'akinsho/toggleterm.nvim',
+        version = '*',
+        config = function()
+            require 'config.toggleterm'
+        end,
+    },
     {
         'EthanJWright/vs-tasks.nvim',
         dependencies = {
@@ -63,13 +64,14 @@ return {
     {
         -- Add indentation guides even on blank lines
         'lukas-reineke/indent-blankline.nvim',
+        main = "ibl",
         -- Enable `lukas-reineke/indent-blankline.nvim`
         -- See `:help indent_blankline.txt`
         opts = {
-            char = '┊',
-            show_trailing_blankline_indent = false,
-            show_current_context = true,
-            show_current_context_start = true,
+            -- char = '┊',
+            -- show_trailing_blankline_indent = false,
+            -- show_current_context = true,
+            -- show_current_context_start = true,
         },
     },
     -- colorschemes
@@ -80,11 +82,18 @@ return {
         config = function()
             require('catppuccin').setup {
                 integrations = {
-                    cmp = true,
+                    cmp = {
+                        enabled = true,
+                        border = {
+                            completion = true,
+                            documentation = true
+                        }
+                    },
                     nvimtree = true,
                     treesitter = true,
                     mini = true,
                 },
+                floating_border = "on",
                 transparent_background = true,
                 -- dim_inactive = {
                 -- 	enabled = true,
@@ -116,10 +125,10 @@ return {
             require 'config.treesitter'
         end,
     },
-    {
-        'andymass/vim-matchup',
-        opts = {},
-    },
+    -- {
+    --     'andymass/vim-matchup',
+    --     opts = {},
+    -- },
     -- {
     --     'HiPhish/rainbow-delimiters.nvim',
     --     config = function()
@@ -203,6 +212,9 @@ return {
         dependencies = {
             'rust-lang/rust.vim',
         },
+        config = function()
+            require 'config.rust-tools'
+        end,
     },
     {
         'mhartington/formatter.nvim',
@@ -259,8 +271,17 @@ return {
     },
     {
         'github/copilot.vim',
-        cnofig = function ()
+        cnofig = function()
             require 'config.copilot'
-        end
-    }
+        end,
+    },
+    {
+        'folke/todo-comments.nvim',
+        dependencies = { 'nvim-lua/plenary.nvim' },
+        opts = {
+            -- your configuration comes here
+            -- or leave it empty to use the default settings
+            -- refer to the configuration section below
+        },
+    },
 }
