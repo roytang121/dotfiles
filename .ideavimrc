@@ -35,6 +35,8 @@ map <c-h> <c-w>h
 map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
+nmap <C-o> :action Back<CR>
+nmap <C-i> :action Forward<CR>
 
 " Go to tab by number
 noremap <leader>1 1gt
