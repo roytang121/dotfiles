@@ -58,8 +58,15 @@ cmp.setup {
 }
 
 -- Add additional capabilities supported by nvim-cmp
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+--
+-- LSP servers and clients are able to communicate to each other what features they support.
+--  By default, Neovim doesn't support everything that is in the LSP Specification.
+--  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
+--  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
 local lspconfig = require 'lspconfig'
 --
@@ -102,13 +109,6 @@ lspconfig.tsserver.setup {}
 -- })
 lspconfig.marksman.setup {}
 lspconfig.lua_ls.setup {}
-
--- Global mappings.
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
-vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
@@ -168,5 +168,48 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
             border = 'rounded',
         })
+
+
+        vim.lsp.inlay_hint.enable(ev.buf, true)
     end,
 })
+
+local executors = require('rustaceanvim.executors')
+local bufnr = vim.api.nvim_get_current_buf()
+
+vim.g.rustaceanvim = {
+    -- Plugin configuration
+    tools = {
+        executor = executors.toggleterm,
+        -- test_executor = executors.toggleterm,
+    },
+    -- LSP configuration
+    server = {
+        on_attach = function(client, bufnr)
+            -- you can also put keymaps in here
+            vim.keymap.set(
+                "n", 
+                "<leader>a", 
+                function()
+                    vim.cmd.RustLsp('codeAction') -- supports rust-analyzer's grouping
+                    -- or vim.lsp.buf.codeAction() if you don't want grouping.
+                end,
+                { silent = true, buffer = bufnr }
+            )
+        end,
+        default_settings = {
+            -- rust-analyzer language server configuration
+            ['rust-analyzer'] = {
+                cachePriming = {
+                    enable = false,
+                },
+                checkOnSave = {
+                    enable = false,
+                },
+            },
+        },
+        -- DAP configuration
+        dap = {
+        },
+    }
+}

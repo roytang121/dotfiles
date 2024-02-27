@@ -1,5 +1,14 @@
 return {
     { 'folke/neodev.nvim', opts = {} },
+    { 'tpope/vim-sleuth' }, -- Detect tabstop and shiftwidth automatically
+    { 'numToStr/Comment.nvim', opts = {} },
+    {
+        'echasnovski/mini.nvim',
+        version = false,
+        config = function ()
+            require 'config.mini'
+        end,
+    },
     {
         'nvim-telescope/telescope.nvim',
         dependencies = {
@@ -118,7 +127,7 @@ return {
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate',
         -- kinda broken for now
-        enabled = false,
+        enabled = true,
         dependencies = {
             -- 'nvim-treesitter/nvim-treesitter-textobjects',
         },
@@ -180,20 +189,13 @@ return {
             'saadparwaiz1/cmp_luasnip',
             'L3MON4D3/LuaSnip',
             'rafamadriz/friendly-snippets',
+            { 'j-hui/fidget.nvim', opts = {} },
             -- java
             'mfussenegger/nvim-jdtls',
         },
         config = function()
             require 'config.lspconfig'
         end,
-    },
-    {
-        'j-hui/fidget.nvim',
-        tag = 'legacy',
-        event = 'LspAttach',
-        opts = {
-            -- options
-        },
     },
     {
         'mfussenegger/nvim-dap',
@@ -207,6 +209,17 @@ return {
         config = function()
             require 'config.nvim-dap'
         end,
+    },
+    {
+        "nvim-neotest/neotest",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "antoinemadec/FixCursorHold.nvim",
+            "nvim-treesitter/nvim-treesitter"
+        },
+        config = function ()
+            require 'config.neotest'
+        end
     },
     {
         'mrcjkb/rustaceanvim',
@@ -257,15 +270,22 @@ return {
             require 'config.overseer'
         end,
     },
-    {
+    { -- Useful plugin to show you pending keybinds.
         'folke/which-key.nvim',
-        event = 'VeryLazy',
-        init = function()
-            vim.o.timeout = true
-            vim.o.timeoutlen = 300
-        end,
-        opts = {},
-    },
+        event = 'VeryLazy', -- Sets the loading event to 'VeryLazy'
+        config = function() -- This is the function that runs, AFTER loading
+            require('which-key').setup()
+
+      -- Document existing key chains
+      require('which-key').register {
+        ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
+        ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
+        ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
+        ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
+        ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
+      }
+    end,
+  },
     {
         'github/copilot.vim',
         cnofig = function()

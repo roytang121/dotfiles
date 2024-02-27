@@ -5,16 +5,6 @@ require('nvim-treesitter.configs').setup {
         additional_vim_regex_highlighting = false,
     },
     indent = { enable = true },
-    incremental_selection = {
-        enable = true,
-        keymaps = {
-            init_selection = '<cr>',
-            node_incremental = '<tab>',
-            scope_incremental = '<cr>',
-            scope_decremental = '<s-cr>',
-            node_decremental = '<s-tab>',
-        },
-    },
     refactor = {
         smart_rename = { enable = true, keymaps = { smart_rename = 'grr' } },
         highlight_definitions = { enable = true },
@@ -25,5 +15,5 @@ require('nvim-treesitter.configs').setup {
 -- enable folding
 -- vim.wo.foldmethod = 'expr'
 -- vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
- -- vim.wo.foldlevel = 99
+-- vim.wo.foldlevel = 99
 
