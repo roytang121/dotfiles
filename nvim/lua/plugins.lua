@@ -1,13 +1,6 @@
 return {
     { 'folke/neodev.nvim', opts = {} },
     {
-        'echasnovski/mini.nvim',
-        version = false,
-        config = function()
-            require 'config.mini'
-        end,
-    },
-    {
         'nvim-telescope/telescope.nvim',
         dependencies = {
             'nvim-lua/plenary.nvim',
@@ -115,11 +108,18 @@ return {
         },
     },
     {
+        'stevearc/oil.nvim',
+        opts = {},
+        -- Optional dependencies
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+    },
+    {
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate',
-        event = 'BufReadPost',
+        -- kinda broken for now
+        enabled = false,
         dependencies = {
-            'nvim-treesitter/nvim-treesitter-textobjects',
+            -- 'nvim-treesitter/nvim-treesitter-textobjects',
         },
         config = function()
             require 'config.treesitter'
@@ -208,13 +208,9 @@ return {
         end,
     },
     {
-        'simrat39/rust-tools.nvim',
-        dependencies = {
-            'rust-lang/rust.vim',
-        },
-        config = function()
-            require 'config.rust-tools'
-        end,
+        'mrcjkb/rustaceanvim',
+        version = '^4', -- Recommended
+        ft = { 'rust' },
     },
     {
         'mhartington/formatter.nvim',
