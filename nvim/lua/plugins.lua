@@ -5,7 +5,8 @@ return {
         dependencies = {
             'nvim-lua/plenary.nvim',
             'nvim-telescope/telescope-file-browser.nvim',
-            { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }
+            { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+            { 'nvim-telescope/telescope-ui-select.nvim' },
         },
         init = function()
             require 'config.telescope_setup'
