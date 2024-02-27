@@ -37,6 +37,8 @@ map <c-k> <c-w>k
 map <c-l> <c-w>l
 nmap <C-o> :action Back<CR>
 nmap <C-i> :action Forward<CR>
+nmap ]d :action GotoNextError<CR>
+nmap [d :action GotoPreviousError<CR>
 
 " Go to tab by number
 noremap <leader>1 1gt
