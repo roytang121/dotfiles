@@ -28,5 +28,5 @@ require('overseer').setup {
 }
 
 -- key mappings
-vim.keymap.set("n", "<C-p>", "<Cmd>OverseerToggle<CR>")
+-- vim.keymap.set("n", "<C-p>", "<Cmd>OverseerToggle<CR>")
 

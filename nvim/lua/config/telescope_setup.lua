@@ -17,6 +17,22 @@ require('telescope').setup {
             require('telescope.themes').get_dropdown(),
         },
     },
+    pickers = {
+        find_files = {
+            find_command = { 'rg', '--files', '--iglob', '!.git', '--hidden'},
+            hidden = true,
+        },
+        live_grep = {
+            additional_args = function()
+                return { '--hidden', '--glob', '!**/.git/*' }
+            end
+        },
+        grep_string = {
+            additional_args = function()
+                return { '--hidden', '--glob', '!**/.git/*' }
+            end
+        },
+    },
 }
 require('telescope').load_extension 'file_browser'
 -- To get fzf loaded and working with telescope, you need to call
@@ -35,12 +51,12 @@ vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iag
 vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
 vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
 -- vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
-vim.keymap.set('n', '<leader>sb', builtin.buffers, { desc = '[ ] Find existing buffers' })
+vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 vim.keymap.set('n', '<leader>fw', builtin.lsp_dynamic_workspace_symbols, { desc = 'workspace symbols' })
 vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, { desc = 'document symbols' })
 vim.keymap.set('n', '<leader>fb', '<Cmd>Telescope file_browser<CR>', { noremap = true })
 vim.keymap.set('n', '<leader>co', builtin.colorscheme, { desc = 'change colorscheme' })
-vim.keymap.set('n', '<leader><space>', builtin.commands, { desc = 'commanads' })
+vim.keymap.set('n', '<C-p>', builtin.commands, { desc = 'commanads' })
 
 -- Slightly advanced example of overriding default behavior and theme
 vim.keymap.set('n', '<leader>/', function()

@@ -128,6 +128,9 @@ return {
         opts = {},
         -- Optional dependencies
         dependencies = { "nvim-tree/nvim-web-devicons" },
+        config = function ()
+            require 'config.oil'
+        end
     },
     {
         'nvim-treesitter/nvim-treesitter',
