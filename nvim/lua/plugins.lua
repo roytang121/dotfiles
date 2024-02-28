@@ -117,6 +117,12 @@ return {
             transparent = false,
         },
     },
+    { 
+        "rebelot/kanagawa.nvim",
+        opts = {
+            transparent = true,
+        }
+    },
     {
         'stevearc/oil.nvim',
         opts = {},
