@@ -107,7 +107,7 @@ return {
     {
         'navarasu/onedark.nvim',
         opts = {
-            style = 'dark',
+            style = 'darker',
             transparent = true,
         },
     },
@@ -121,6 +121,12 @@ return {
         "rebelot/kanagawa.nvim",
         opts = {
             transparent = true,
+            colors = {                   -- add/modify theme and palette colors
+                palette = {
+                    waveBlue1 = "#2D4F67",
+                },
+                theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
+            },
         }
     },
     {
@@ -135,7 +141,6 @@ return {
     {
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate',
-        -- kinda broken for now
         enabled = true,
         dependencies = {
             -- 'nvim-treesitter/nvim-treesitter-textobjects',
