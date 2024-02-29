@@ -175,7 +175,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 local executors = require('rustaceanvim.executors')
-local bufnr = vim.api.nvim_get_current_buf()
 
 vim.g.rustaceanvim = {
     -- Plugin configuration
@@ -201,10 +200,10 @@ vim.g.rustaceanvim = {
             -- rust-analyzer language server configuration
             ['rust-analyzer'] = {
                 cachePriming = {
-                    enable = false,
+                    enable = true,
                 },
                 checkOnSave = {
-                    enable = false,
+                    enable = true,
                 },
             },
         },
