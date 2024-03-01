@@ -168,9 +168,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
             border = 'rounded',
         })
-
-
-        vim.lsp.inlay_hint.enable(ev.buf, true)
     end,
 })
 
@@ -195,6 +192,11 @@ vim.g.rustaceanvim = {
                 end,
                 { silent = true, buffer = bufnr }
             )
+
+            -- only do inlay hint with rust-analyzer if supported
+            if client.server_capabilities.inlayHintProvider then
+                vim.lsp.buf.inlay_hint(bufnr, true)
+            end
         end,
         default_settings = {
             -- rust-analyzer language server configuration
