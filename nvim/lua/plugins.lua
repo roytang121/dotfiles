@@ -207,6 +207,9 @@ return {
             -- java
             'mfussenegger/nvim-jdtls',
         },
+        opts = {
+            inlay_hints = { enabled = true },
+        },
         config = function()
             require 'config.lspconfig'
         end,
@@ -239,6 +242,9 @@ return {
         'mrcjkb/rustaceanvim',
         version = '^4', -- Recommended
         ft = { 'rust' },
+        config = function ()
+            require 'config.rustaceanvim'
+        end
     },
     {
         'mhartington/formatter.nvim',

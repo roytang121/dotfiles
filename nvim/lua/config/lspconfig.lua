@@ -89,7 +89,6 @@ for _, lsp in ipairs(servers) do
 end
 
 -- Setup language servers.
-local lspconfig = require 'lspconfig'
 lspconfig.pyright.setup {
     on_attach = function(client, bufnr)
         local bufopts = { noremap = true, silent = true, buffer = bufnr }
@@ -196,46 +195,3 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end,
 })
 
-local executors = require('rustaceanvim.executors')
-
-vim.g.rustaceanvim = {
-    -- Plugin configuration
-    tools = {
-        executor = executors.toggleterm,
-        -- test_executor = executors.toggleterm,
-    },
-    -- LSP configuration
-    server = {
-        on_attach = function(client, bufnr)
-            -- you can also put keymaps in here
-            vim.keymap.set(
-                "n", 
-                "<leader>a", 
-                function()
-                    vim.cmd.RustLsp('codeAction') -- supports rust-analyzer's grouping
-                    -- or vim.lsp.buf.codeAction() if you don't want grouping.
-                end,
-                { silent = true, buffer = bufnr }
-            )
-
-            -- only do inlay hint with rust-analyzer if supported
-            if client.server_capabilities.inlayHintProvider then
-                vim.lsp.buf.inlay_hint(bufnr, true)
-            end
-        end,
-        default_settings = {
-            -- rust-analyzer language server configuration
-            ['rust-analyzer'] = {
-                cachePriming = {
-                    enable = true,
-                },
-                checkOnSave = {
-                    enable = true,
-                },
-            },
-        },
-        -- DAP configuration
-        dap = {
-        },
-    }
-}
