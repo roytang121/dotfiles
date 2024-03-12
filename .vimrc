@@ -1,7 +1,7 @@
 syntax on
 
-background=dark
-colorschem evening
+set background=dark
+" colorscheme evening
 
 call plug#begin()
 
