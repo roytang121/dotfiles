@@ -117,7 +117,7 @@ return {
             transparent = false,
         },
     },
-    { 
+    {
         "rebelot/kanagawa.nvim",
         opts = {
             transparent = true,
@@ -129,6 +129,7 @@ return {
             },
         }
     },
+    { 'metalelf0/jellybeans-nvim', dependencies = { 'rktjmp/lush.nvim' } },
     {
         'stevearc/oil.nvim',
         opts = {},

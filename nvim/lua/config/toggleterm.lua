@@ -1,4 +1,6 @@
-require('toggleterm').setup {}
+require('toggleterm').setup {
+    close_on_exit = false,
+}
 
 -- " set
 -- autocmd TermEnter term://*toggleterm#*

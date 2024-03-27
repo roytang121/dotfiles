@@ -20,7 +20,7 @@ vim.g.rustaceanvim = function()
         -- Plugin configuration
         tools = {
             executor = executors.toggleterm,
-            -- test_executor = executors.toggleterm,
+            test_executor = executors.toggleterm,
         },
         -- LSP configuration
         server = {
