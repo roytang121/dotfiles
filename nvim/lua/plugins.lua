@@ -1,9 +1,20 @@
 return {
-    { 'folke/neodev.nvim', opts = {} },
-    { 'tpope/vim-sleuth' }, -- Detect tabstop and shiftwidth automatically
-    { 'numToStr/Comment.nvim', opts = {} },
+    {
+        'folke/neodev.nvim',
+        event = 'VeryLazy',
+        opts = {},
+    },
+    {
+        'tpope/vim-sleuth',
+        lazy = true,
+    }, -- Detect tabstop and shiftwidth automatically
+    {
+        'numToStr/Comment.nvim',
+        opts = {},
+    },
     {
         'echasnovski/mini.nvim',
+        event = 'VeryLazy',
         version = false,
         config = function ()
             require 'config.mini'
@@ -11,38 +22,33 @@ return {
     },
     {
         'nvim-telescope/telescope.nvim',
+        lazy = true,
+        event = 'VeryLazy',
         dependencies = {
             'nvim-lua/plenary.nvim',
             'nvim-telescope/telescope-file-browser.nvim',
-            { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+            { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' },
             { 'nvim-telescope/telescope-ui-select.nvim' },
         },
-        init = function()
-            require 'config.telescope_setup'
-        end,
+        -- init = function()
+        --     require 'config.telescope_setup'
+        -- end,
         config = function()
-            require 'config.telescope'
+            require 'config.telescope_setup'
         end,
         cmd = 'Telescope',
     },
     {
         'akinsho/toggleterm.nvim',
         version = '*',
+        event = 'VeryLazy',
         config = function()
             require 'config.toggleterm'
         end,
     },
     {
-        'EthanJWright/vs-tasks.nvim',
-        dependencies = {
-            'nvim-lua/popup.nvim',
-        },
-        config = function()
-            require('vstask').setup {}
-        end,
-    },
-    {
         'alexghergh/nvim-tmux-navigation',
+        event = 'VeryLazy',
         config = function()
             require 'config.tmux_navigation'
         end,
@@ -50,6 +56,7 @@ return {
     -- Set lualine as statusline
     {
         'nvim-lualine/lualine.nvim',
+        event = 'VeryLazy',
         opts = {
             options = {
                 icons_enabled = false,
@@ -60,6 +67,7 @@ return {
     },
     {
         'akinsho/bufferline.nvim',
+        event = 'VeryLazy',
         version = '*',
         dependencies = 'nvim-tree/nvim-web-devicons',
         opts = {},
@@ -67,6 +75,7 @@ return {
     {
         -- Add indentation guides even on blank lines
         'lukas-reineke/indent-blankline.nvim',
+        event = 'VeryLazy',
         main = "ibl",
         -- Enable `lukas-reineke/indent-blankline.nvim`
         -- See `:help indent_blankline.txt`
@@ -81,6 +90,7 @@ return {
     {
         'catppuccin/nvim',
         name = 'catppuccin',
+        event = 'VeryLazy',
         priority = 1000,
         config = function()
             require('catppuccin').setup {
@@ -106,6 +116,7 @@ return {
     },
     {
         'navarasu/onedark.nvim',
+        event = 'VeryLazy',
         opts = {
             style = 'darker',
             transparent = true,
@@ -113,6 +124,7 @@ return {
     },
     {
         'folke/tokyonight.nvim',
+        event = 'VeryLazy',
         opts = {
             transparent = false,
         },
@@ -132,6 +144,7 @@ return {
     { 'metalelf0/jellybeans-nvim', dependencies = { 'rktjmp/lush.nvim' } },
     {
         'stevearc/oil.nvim',
+        event = 'VeryLazy',
         opts = {},
         -- Optional dependencies
         dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -141,6 +154,7 @@ return {
     },
     {
         'nvim-treesitter/nvim-treesitter',
+        event = 'BufRead',
         build = ':TSUpdate',
         enabled = true,
         dependencies = {
@@ -195,6 +209,7 @@ return {
     -- },
     {
         'neovim/nvim-lspconfig',
+        event = { "BufReadPre", "BufNewFile" },
         dependencies = {
             'hrsh7th/cmp-nvim-lsp',
             'hrsh7th/cmp-buffer',
@@ -217,8 +232,10 @@ return {
     },
     {
         'mfussenegger/nvim-dap',
+        event = 'VeryLazy',
         dependencies = {
             'rcarriga/nvim-dap-ui',
+            "nvim-neotest/nvim-nio",
             -- 'williamboman/mason.nvim',
             -- 'jay-babu/mason-nvim-dap.nvim',
             -- own debuggers
@@ -230,8 +247,10 @@ return {
     },
     {
         "nvim-neotest/neotest",
+        event = 'VeryLazy',
         dependencies = {
             "nvim-lua/plenary.nvim",
+            "nvim-neotest/nvim-nio",
             "antoinemadec/FixCursorHold.nvim",
             "nvim-treesitter/nvim-treesitter"
         },
@@ -249,47 +268,40 @@ return {
     },
     {
         'mhartington/formatter.nvim',
+        event = 'VeryLazy',
         config = function()
             require 'config.formatter'
         end,
     },
     {
-        'nvim-tree/nvim-tree.lua',
-        config = function()
-            require 'config.nvim_tree'
-        end,
-    },
-    {
         'tenfyzhong/autoflake.vim',
+        event = 'VeryLazy',
     },
     -- gits
     {
         'tpope/vim-fugitive',
+        event = 'VeryLazy',
     },
     {
         'tpope/vim-rhubarb',
+        event = 'VeryLazy',
     },
     {
         'lewis6991/gitsigns.nvim',
+        event = 'VeryLazy',
         config = function()
             require 'config.gitsigns'
         end,
     },
     {
         'sindrets/diffview.nvim',
+        event = 'VeryLazy',
         opts = {},
     },
     {
-        'stevearc/overseer.nvim',
-        dependencies = {
-            {
-                'stevearc/dressing.nvim',
-                opts = {},
-            },
-        },
-        config = function()
-            require 'config.overseer'
-        end,
+        'stevearc/dressing.nvim',
+        event = 'VeryLazy',
+        opts = {},
     },
     { -- Useful plugin to show you pending keybinds.
         'folke/which-key.nvim',
@@ -315,6 +327,7 @@ return {
     },
     {
         'folke/todo-comments.nvim',
+        event = 'VeryLazy',
         dependencies = { 'nvim-lua/plenary.nvim' },
         opts = {
             -- your configuration comes here

@@ -81,3 +81,4 @@ vim.keymap.set('n', '<leader>sn', function()
     builtin.find_files { cwd = vim.fn.stdpath 'config' }
 end, { desc = '[S]earch [N]eovim files' })
 
+vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
