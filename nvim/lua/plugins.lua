@@ -6,7 +6,7 @@ return {
     },
     {
         'tpope/vim-sleuth',
-        lazy = true,
+        event = 'BufRead',
     }, -- Detect tabstop and shiftwidth automatically
     {
         'numToStr/Comment.nvim',
@@ -132,7 +132,7 @@ return {
     {
         "rebelot/kanagawa.nvim",
         opts = {
-            transparent = true,
+            transparent = false,
             colors = {                   -- add/modify theme and palette colors
                 palette = {
                     waveBlue1 = "#2D4F67",
