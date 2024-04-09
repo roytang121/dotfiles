@@ -30,9 +30,6 @@ return {
             { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' },
             { 'nvim-telescope/telescope-ui-select.nvim' },
         },
-        -- init = function()
-        --     require 'config.telescope_setup'
-        -- end,
         config = function()
             require 'config.telescope_setup'
         end,
@@ -132,7 +129,7 @@ return {
     {
         "rebelot/kanagawa.nvim",
         opts = {
-            transparent = false,
+            transparent = true,
             colors = {                   -- add/modify theme and palette colors
                 palette = {
                     waveBlue1 = "#2D4F67",
@@ -141,7 +138,11 @@ return {
             },
         }
     },
-    { 'metalelf0/jellybeans-nvim', dependencies = { 'rktjmp/lush.nvim' } },
+    {
+        'metalelf0/jellybeans-nvim',
+        event = 'VeryLazy',
+        dependencies = { 'rktjmp/lush.nvim' }
+    },
     {
         'stevearc/oil.nvim',
         event = 'VeryLazy',
@@ -321,6 +322,7 @@ return {
   },
     {
         'github/copilot.vim',
+        event = 'VeryLazy',
         cnofig = function()
             require 'config.copilot'
         end,

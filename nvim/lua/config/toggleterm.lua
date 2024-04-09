@@ -16,6 +16,13 @@ require('toggleterm').setup {
 -- nnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
 -- inoremap <silent><c-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
 --
+
+vim.cmd 'autocmd! TermEnter term://*toggleterm#* tnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>'
+
+vim.keymap.set('n', '<C-t>', [[<Cmd>exe v:count1 . "ToggleTerm"<CR>]], { silent = true })
+vim.keymap.set('i', '<C-t>', [[<Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>]], { silent = true })
+
+
 function _G.set_terminal_keymaps()
     local opts = { buffer = 0 }
     vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)

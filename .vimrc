@@ -8,7 +8,6 @@ call plug#begin()
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'chrisbra/matchit'
-Plug 'preservim/nerdtree'
 
 call plug#end()
 
@@ -27,8 +26,3 @@ set nu
 set rnu
 set nocp
 
-" NERDTree key mappings
-nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>

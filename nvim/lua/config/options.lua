@@ -99,7 +99,6 @@ vim.opt.smartindent = true
 vim.opt.swapfile = false
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
--- vim.opt.clipboard = "unnamed,unnamedplus"
 vim.opt.background = "dark"
 vim.opt.wrap = true
 
