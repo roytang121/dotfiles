@@ -16,7 +16,7 @@ return {
         'echasnovski/mini.nvim',
         event = 'VeryLazy',
         version = false,
-        config = function ()
+        config = function()
             require 'config.mini'
         end,
     },
@@ -27,7 +27,10 @@ return {
         dependencies = {
             'nvim-lua/plenary.nvim',
             'nvim-telescope/telescope-file-browser.nvim',
-            { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' },
+            {
+                'nvim-telescope/telescope-fzf-native.nvim',
+                build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
+            },
             { 'nvim-telescope/telescope-ui-select.nvim' },
         },
         config = function()
@@ -73,7 +76,7 @@ return {
         -- Add indentation guides even on blank lines
         'lukas-reineke/indent-blankline.nvim',
         event = 'VeryLazy',
-        main = "ibl",
+        main = 'ibl',
         -- Enable `lukas-reineke/indent-blankline.nvim`
         -- See `:help indent_blankline.txt`
         opts = {
@@ -96,14 +99,14 @@ return {
                         enabled = true,
                         border = {
                             completion = true,
-                            documentation = true
-                        }
+                            documentation = true,
+                        },
                     },
                     nvimtree = true,
                     treesitter = true,
                     mini = true,
                 },
-                floating_border = "on",
+                floating_border = 'on',
                 transparent_background = true,
                 -- dim_inactive = {
                 -- 	enabled = true,
@@ -127,31 +130,31 @@ return {
         },
     },
     {
-        "rebelot/kanagawa.nvim",
+        'rebelot/kanagawa.nvim',
         opts = {
             transparent = true,
-            colors = {                   -- add/modify theme and palette colors
+            colors = { -- add/modify theme and palette colors
                 palette = {
-                    waveBlue1 = "#2D4F67",
+                    waveBlue1 = '#2D4F67',
                 },
                 theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
             },
-        }
+        },
     },
     {
         'metalelf0/jellybeans-nvim',
         event = 'VeryLazy',
-        dependencies = { 'rktjmp/lush.nvim' }
+        dependencies = { 'rktjmp/lush.nvim' },
     },
     {
         'stevearc/oil.nvim',
         event = 'VeryLazy',
         opts = {},
         -- Optional dependencies
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        config = function ()
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        config = function()
             require 'config.oil'
-        end
+        end,
     },
     {
         'nvim-treesitter/nvim-treesitter',
@@ -210,7 +213,7 @@ return {
     -- },
     {
         'neovim/nvim-lspconfig',
-        event = { "BufReadPre", "BufNewFile" },
+        event = { 'BufReadPre', 'BufNewFile' },
         dependencies = {
             'hrsh7th/cmp-nvim-lsp',
             'hrsh7th/cmp-buffer',
@@ -236,7 +239,7 @@ return {
         event = 'VeryLazy',
         dependencies = {
             'rcarriga/nvim-dap-ui',
-            "nvim-neotest/nvim-nio",
+            'nvim-neotest/nvim-nio',
             -- 'williamboman/mason.nvim',
             -- 'jay-babu/mason-nvim-dap.nvim',
             -- own debuggers
@@ -247,25 +250,25 @@ return {
         end,
     },
     {
-        "nvim-neotest/neotest",
+        'nvim-neotest/neotest',
         event = 'VeryLazy',
         dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-neotest/nvim-nio",
-            "antoinemadec/FixCursorHold.nvim",
-            "nvim-treesitter/nvim-treesitter"
+            'nvim-lua/plenary.nvim',
+            'nvim-neotest/nvim-nio',
+            'antoinemadec/FixCursorHold.nvim',
+            'nvim-treesitter/nvim-treesitter',
         },
-        config = function ()
+        config = function()
             require 'config.neotest'
-        end
+        end,
     },
     {
         'mrcjkb/rustaceanvim',
         version = '^4', -- Recommended
         ft = { 'rust' },
-        config = function ()
+        config = function()
             require 'config.rustaceanvim'
-        end
+        end,
     },
     {
         'mhartington/formatter.nvim',
@@ -310,16 +313,16 @@ return {
         config = function() -- This is the function that runs, AFTER loading
             require('which-key').setup()
 
-      -- Document existing key chains
-      require('which-key').register {
-        ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-        ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
-        ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
-        ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
-        ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
-      }
-    end,
-  },
+            -- Document existing key chains
+            require('which-key').register {
+                ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
+                ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
+                ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
+                ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
+                ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
+            }
+        end,
+    },
     {
         'github/copilot.vim',
         event = 'VeryLazy',
