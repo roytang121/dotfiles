@@ -31,7 +31,7 @@ require('mini.surround').setup()
 -- require('mini.indentscope').gen_animation.none()
 
 require("mini.bracketed").setup()
-require("mini.pairs").setup()
+-- require("mini.pairs").setup()
 
 -- Better Around/Inside textobjects
 --

@@ -41,6 +41,8 @@ require('telescope').load_extension 'fzf'
 -- Enable telescope extensions, if they are installed
 require('telescope').load_extension 'ui-select'
 
+require("telescope").load_extension("noice")
+
 vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
 vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })

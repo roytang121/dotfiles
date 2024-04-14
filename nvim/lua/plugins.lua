@@ -21,6 +21,32 @@ return {
         end,
     },
     {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        config = true
+        -- use opts = {} for passing setup options
+        -- this is equalent to setup({}) function
+    },
+    -- lazy.nvim
+    {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        opts = {
+            -- add any options here
+        },
+        config = function ()
+            require 'config.noice'
+        end,
+        dependencies = {
+            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+            "MunifTanjim/nui.nvim",
+            -- OPTIONAL:
+            --   `nvim-notify` is only needed, if you want to use the notification view.
+            --   If not available, we use `mini` as the fallback
+            "rcarriga/nvim-notify",
+        }
+    },
+    {
         'nvim-telescope/telescope.nvim',
         lazy = true,
         event = 'VeryLazy',
@@ -223,7 +249,7 @@ return {
             'saadparwaiz1/cmp_luasnip',
             'L3MON4D3/LuaSnip',
             'rafamadriz/friendly-snippets',
-            { 'j-hui/fidget.nvim', opts = {} },
+            -- { 'j-hui/fidget.nvim', opts = {} },
             -- java
             'mfussenegger/nvim-jdtls',
         },

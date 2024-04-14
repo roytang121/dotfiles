@@ -189,9 +189,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
         end, opts)
 
         -- Change border of documentation hover window, See https://github.com/neovim/neovim/pull/13998.
-        vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
-            border = 'rounded',
-        })
+        -- disable to let noice take over it
+        -- vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
+        --     border = 'rounded',
+        -- })
     end,
 })
 
