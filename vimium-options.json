@@ -1,0 +1,6 @@
+{
+  "keyMappings": "# Insert your preferred key mappings here.\n\n# remap scrolling\nunmap u\nunmap d\nmap <c-u> scrollPageUp\nmap <c-d> scrollPageDown\n\n# remap navigations\nunmap H\nunmap L\nmap <c-o> goBack\nmap <c-i> goForward\n\n# remap tabs\nunmap t\nunmap T\nmap t Vomnibar.activateTabSelection\nmap T createTab",
+  "scrollStepSize": 100,
+  "smoothScroll": false,
+  "settingsVersion": "2.1.2"
+}
