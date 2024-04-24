@@ -23,7 +23,9 @@ return {
     {
         'windwp/nvim-autopairs',
         event = "InsertEnter",
-        config = true
+        config = function()
+            require 'config.autopairs'
+        end,
         -- use opts = {} for passing setup options
         -- this is equalent to setup({}) function
     },
@@ -48,14 +50,21 @@ return {
     },
     {
         'nvim-telescope/telescope.nvim',
-        lazy = true,
-        event = 'VeryLazy',
+        event = 'VimEnter',
         dependencies = {
             'nvim-lua/plenary.nvim',
-            'nvim-telescope/telescope-file-browser.nvim',
-            {
+            { -- If encountering errors, see telescope-fzf-native README for installation instructions
                 'nvim-telescope/telescope-fzf-native.nvim',
-                build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
+
+                -- `build` is used to run some command when the plugin is installed/updated.
+                -- This is only run then, not every time Neovim starts up.
+                build = 'make',
+
+                -- `cond` is a condition used to determine whether this plugin should be
+                -- installed and loaded.
+                cond = function()
+                    return vim.fn.executable 'make' == 1
+                end,
             },
             { 'nvim-telescope/telescope-ui-select.nvim' },
         },
@@ -102,6 +111,7 @@ return {
     },
     {
         'akinsho/bufferline.nvim',
+        enabled = false,
         event = 'VeryLazy',
         version = '*',
         dependencies = 'nvim-tree/nvim-web-devicons',
@@ -183,8 +193,7 @@ return {
     },
     {
         'stevearc/oil.nvim',
-        event = 'VeryLazy',
-        opts = {},
+        -- event = 'VeryLazy',
         -- Optional dependencies
         dependencies = { 'nvim-tree/nvim-web-devicons' },
         config = function()
@@ -203,37 +212,6 @@ return {
             require 'config.treesitter'
         end,
     },
-    -- {
-    --     'andymass/vim-matchup',
-    --     opts = {},
-    -- },
-    -- {
-    --     'HiPhish/rainbow-delimiters.nvim',
-    --     config = function()
-    --         -- This module contains a number of default definitions
-    --         local rainbow_delimiters = require 'rainbow-delimiters'
-    --
-    --         vim.g.rainbow_delimiters = {
-    --             strategy = {
-    --                 [''] = rainbow_delimiters.strategy['global'],
-    --                 vim = rainbow_delimiters.strategy['local'],
-    --             },
-    --             query = {
-    --                 [''] = 'rainbow-delimiters',
-    --                 lua = 'rainbow-blocks',
-    --             },
-    --             highlight = {
-    --                 'RainbowDelimiterRed',
-    --                 'RainbowDelimiterYellow',
-    --                 'RainbowDelimiterBlue',
-    --                 'RainbowDelimiterOrange',
-    --                 'RainbowDelimiterGreen',
-    --                 'RainbowDelimiterViolet',
-    --                 'RainbowDelimiterCyan',
-    --             },
-    --         }
-    --     end,
-    -- },
     -- {
     --     'williamboman/mason-lspconfig.nvim',
     --     dependencies = {
@@ -260,7 +238,7 @@ return {
             'rafamadriz/friendly-snippets',
             -- { 'j-hui/fidget.nvim', opts = {} },
             -- java
-            'mfussenegger/nvim-jdtls',
+            --'mfussenegger/nvim-jdtls',
         },
         opts = {
             inlay_hints = { enabled = true },
@@ -300,6 +278,7 @@ return {
     {
         'mrcjkb/rustaceanvim',
         version = '^4', -- Recommended
+        lazy = false,
         ft = { 'rust' },
         config = function()
             require 'config.rustaceanvim'
@@ -340,6 +319,7 @@ return {
     {
         'stevearc/dressing.nvim',
         event = 'VeryLazy',
+        enabled = false,
         opts = {},
     },
     { -- Useful plugin to show you pending keybinds.
@@ -367,12 +347,13 @@ return {
     },
     {
         'folke/todo-comments.nvim',
-        event = 'VeryLazy',
+        event = 'VimEnter',
         dependencies = { 'nvim-lua/plenary.nvim' },
         opts = {
             -- your configuration comes here
             -- or leave it empty to use the default settings
             -- refer to the configuration section below
+            signs = false,
         },
     },
 }

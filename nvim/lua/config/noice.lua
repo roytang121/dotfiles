@@ -25,6 +25,12 @@ require("noice").setup({
     lsp_doc_border = true, -- add a border to hover docs and signature help
     -- cmdline_output_to_split = true,
   },
+  routes = {
+    {
+      view = "mini",
+      filter = { event = "msg_showmode" },
+    },
+  },
   -- routes = {
   --   {
   --     filter = {
