@@ -49,8 +49,20 @@ return {
         }
     },
     {
+        "ibhagwan/fzf-lua",
+        -- event = 'VimEnter',
+        -- optional for icon support
+        -- dependencies = { "nvim-tree/nvim-web-devicons" },
+        config = function()
+            -- calling `setup` is optional for customization
+            -- require("fzf-lua").setup({ "max-perf" })
+            require("config.fzf-lua")
+        end
+    },
+    {
         'nvim-telescope/telescope.nvim',
         event = 'VimEnter',
+        enabled = false,
         dependencies = {
             'nvim-lua/plenary.nvim',
             { -- If encountering errors, see telescope-fzf-native README for installation instructions
