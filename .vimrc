@@ -25,4 +25,4 @@ set scrolloff=10
 set nu
 set rnu
 set nocp
-
+set clipboard^=unnamed,unnamedplus
