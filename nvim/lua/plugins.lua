@@ -353,7 +353,7 @@ return {
     {
         'github/copilot.vim',
         event = 'VeryLazy',
-        cnofig = function()
+        config = function()
             require 'config.copilot'
         end,
     },
