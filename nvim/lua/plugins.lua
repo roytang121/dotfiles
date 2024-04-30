@@ -352,6 +352,7 @@ return {
     },
     {
         'github/copilot.vim',
+        enabled = false,
         event = 'VeryLazy',
         cnofig = function()
             require 'config.copilot'
