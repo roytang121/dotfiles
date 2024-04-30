@@ -29,10 +29,17 @@ return {
         -- use opts = {} for passing setup options
         -- this is equalent to setup({}) function
     },
-    -- lazy.nvim
+    {
+        'kevinhwang91/nvim-ufo',
+        dependencies = { 'kevinhwang91/promise-async' },
+        config = function ()
+            require 'config.ufo'
+        end
+    },
     {
         "folke/noice.nvim",
         event = "VeryLazy",
+        enabled = false,
         opts = {
             -- add any options here
         },
@@ -49,8 +56,20 @@ return {
         }
     },
     {
+        "ibhagwan/fzf-lua",
+        -- event = 'VimEnter',
+        -- optional for icon support
+        -- dependencies = { "nvim-tree/nvim-web-devicons" },
+        config = function()
+            -- calling `setup` is optional for customization
+            -- require("fzf-lua").setup({ "max-perf" })
+            require("config.fzf-lua")
+        end
+    },
+    {
         'nvim-telescope/telescope.nvim',
         event = 'VimEnter',
+        enabled = false,
         dependencies = {
             'nvim-lua/plenary.nvim',
             { -- If encountering errors, see telescope-fzf-native README for installation instructions
@@ -236,7 +255,7 @@ return {
             'saadparwaiz1/cmp_luasnip',
             'L3MON4D3/LuaSnip',
             'rafamadriz/friendly-snippets',
-            -- { 'j-hui/fidget.nvim', opts = {} },
+            { 'j-hui/fidget.nvim', opts = {} },
             -- java
             --'mfussenegger/nvim-jdtls',
         },
@@ -340,6 +359,7 @@ return {
     },
     {
         'github/copilot.vim',
+        enabled = false,
         event = 'VeryLazy',
         cnofig = function()
             require 'config.copilot'
@@ -356,4 +376,4 @@ return {
             signs = false,
         },
     },
-}
+e}
