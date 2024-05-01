@@ -99,28 +99,27 @@ vim.opt.smartindent = true
 vim.opt.swapfile = false
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
-vim.opt.background = "dark"
+vim.opt.background = 'dark'
 vim.opt.wrap = false
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = "menuone,noselect"
+vim.o.completeopt = 'menuone,noselect'
 
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
 --  See `:help vim.highlight.on_yank()`
 vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
-  callback = function()
-    vim.highlight.on_yank()
-  end,
+    desc = 'Highlight when yanking (copying) text',
+    group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+    callback = function()
+        vim.highlight.on_yank()
+    end,
 })
 
 -- copilot settings override
 vim.g.copilot_assume_mapped = true
 vim.g.copilot_no_tab_map = true
-vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+vim.api.nvim_set_keymap('i', '<C-J>', 'copilot#Accept("<CR>")', { silent = true, expr = true })
 
 -- vim.opt.cmdheight = 0
 -- vim.opt.colorcolumn = "80"
-
