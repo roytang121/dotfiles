@@ -1,6 +1,8 @@
 local builtin = require("fzf-lua")
 builtin.setup { "max-perf" }
 
+builtin.register_ui_select()
+
 vim.keymap.set('n', '<leader>sh', builtin.helptags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
 vim.keymap.set('n', '<leader>sf', builtin.files, { desc = '[S]earch [F]iles' })

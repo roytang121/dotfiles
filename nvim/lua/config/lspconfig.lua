@@ -13,7 +13,7 @@ cmp.setup {
     },
     mapping = cmp.mapping.preset.insert {
         ['<C-u>'] = cmp.mapping.scroll_docs(-4), -- Up
-        ['<C-d>'] = cmp.mapping.scroll_docs(4), -- Down
+        ['<C-d>'] = cmp.mapping.scroll_docs(4),  -- Down
         -- C-b (back) C-f (forward) for snippet placeholder navigation.
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<CR>'] = cmp.mapping.confirm {
@@ -162,7 +162,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         -- Jump to the definition of the word under your cursor.
         --  This is where a variable was first declared, or where a function is defined, etc.
         --  To jump back, press <C-T>.
-        map('gd', require('fzf-lua').lsp_definitions, '[G]oto [D]efinition')
+        map('gd', vim.lsp.buf.declaration, '[G]oto [D]efinition')
 
         -- Find references for the word under your cursor.
         map('gr', require('fzf-lua').lsp_references, '[G]oto [R]eferences')
@@ -182,7 +182,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
         -- WARN: This is not Goto Definition, this is Goto Declaration.
         --  For example, in C this would take you to the header
-        map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+        map('gD', require('fzf-lua').lsp_definitions, '[G]oto [D]eclaration')
 
         vim.keymap.set('n', '<leader>gf', function()
             vim.lsp.buf.format { async = true }
@@ -195,4 +195,3 @@ vim.api.nvim_create_autocmd('LspAttach', {
         -- })
     end,
 })
-

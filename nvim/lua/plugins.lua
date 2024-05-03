@@ -10,6 +10,10 @@ return {
     }, -- Detect tabstop and shiftwidth automatically
     {
         'numToStr/Comment.nvim',
+        enabled = function()
+            -- disabled since neovim has builtin comment in nightly build
+            return not vim.fn.has('nvim-0.10')
+        end,
         opts = {},
     },
     {
@@ -123,7 +127,7 @@ return {
                     {
                         'filename',
                         file_status = true, -- displays file status (readonly status, modified status)
-                        path = 1, -- 0 = just filename, 1 = relative path, 2 = absolute path
+                        path = 1,           -- 0 = just filename, 1 = relative path, 2 = absolute path
                     },
                 },
             },
@@ -339,6 +343,7 @@ return {
             end,
             formatters_by_ft = {
                 lua = { 'stylua' },
+                rust = { 'rustfmt' },
                 -- Conform can also run multiple formatters sequentially
                 -- python = { "isort", "black" },
                 --
@@ -379,7 +384,7 @@ return {
         enabled = false,
         opts = {},
     },
-    { -- Useful plugin to show you pending keybinds.
+    {                       -- Useful plugin to show you pending keybinds.
         'folke/which-key.nvim',
         event = 'VeryLazy', -- Sets the loading event to 'VeryLazy'
         config = function() -- This is the function that runs, AFTER loading
