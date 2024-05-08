@@ -26,3 +26,4 @@ set nu
 set rnu
 set nocp
 set clipboard^=unnamed,unnamedplus
+set noswapfile
