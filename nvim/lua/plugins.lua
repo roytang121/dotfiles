@@ -12,7 +12,7 @@ return {
         'numToStr/Comment.nvim',
         enabled = function()
             -- disabled since neovim has builtin comment in nightly build
-            return not vim.fn.has('nvim-0.10')
+            return not vim.fn.has 'nvim-0.10'
         end,
         opts = {},
     },
@@ -127,7 +127,7 @@ return {
                     {
                         'filename',
                         file_status = true, -- displays file status (readonly status, modified status)
-                        path = 1,           -- 0 = just filename, 1 = relative path, 2 = absolute path
+                        path = 1, -- 0 = just filename, 1 = relative path, 2 = absolute path
                     },
                 },
             },
@@ -323,7 +323,7 @@ return {
             {
                 '<leader>ff',
                 function()
-                    require('conform').format { async = true, lsp_fallback = true }
+                    require('conform').format { async = true, lsp_fallback = false }
                 end,
                 mode = '',
                 desc = '[F]ormat buffer',
@@ -345,7 +345,7 @@ return {
                 lua = { 'stylua' },
                 rust = { 'rustfmt' },
                 -- Conform can also run multiple formatters sequentially
-                -- python = { "isort", "black" },
+                python = { 'ruff_format' },
                 --
                 -- You can use a sub-list to tell conform to run *until* a formatter
                 -- is found.
@@ -384,7 +384,7 @@ return {
         enabled = false,
         opts = {},
     },
-    {                       -- Useful plugin to show you pending keybinds.
+    { -- Useful plugin to show you pending keybinds.
         'folke/which-key.nvim',
         event = 'VeryLazy', -- Sets the loading event to 'VeryLazy'
         config = function() -- This is the function that runs, AFTER loading
@@ -410,5 +410,4 @@ return {
             signs = false,
         },
     },
-    e,
 }
