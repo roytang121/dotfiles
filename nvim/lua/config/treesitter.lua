@@ -1,20 +1,15 @@
 require('nvim-treesitter.configs').setup {
     auto_install = true,
     highlight = {
-        enable = true,
+        enable = false,
         additional_vim_regex_highlighting = false,
-        disable = { "log", "yml", "yaml", "json" },
+        disable = { 'log', 'yml', 'yaml', 'json' },
     },
-    indent = { enable = true },
+    indent = { enable = false },
     refactor = {
-        smart_rename = { enable = true, keymaps = { smart_rename = 'grr' } },
-        highlight_definitions = { enable = true },
+        smart_rename = { enable = false, keymaps = { smart_rename = 'grr' } },
+        highlight_definitions = { enable = false },
     },
-    matchup = { enable = true, include_match_words = true, enable_quotes = true },
-    autotag = { enable = true },
+    matchup = { enable = false, include_match_words = true, enable_quotes = true },
+    autotag = { enable = false },
 }
--- enable folding
--- vim.wo.foldmethod = 'expr'
--- vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
--- vim.wo.foldlevel = 99
-

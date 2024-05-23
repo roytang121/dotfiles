@@ -1,5 +1,5 @@
 vim.g.rustaceanvim = function()
-    local executors = require('rustaceanvim.executors')
+    local executors = require 'rustaceanvim.executors'
     -- -- Update this path
     -- local extension_path = vim.env.HOME .. '/.vscode/extensions/vadimcn.vscode-lldb-1.10.0/'
     -- local codelldb_path = extension_path .. 'adapter/codelldb'
@@ -15,7 +15,7 @@ vim.g.rustaceanvim = function()
     --     liblldb_path = liblldb_path .. (this_os == "Linux" and ".so" or ".dylib")
     -- end
 
-    local cfg = require('rustaceanvim.config')
+    local cfg = require 'rustaceanvim.config'
     return {
         -- Plugin configuration
         tools = {
@@ -49,3 +49,28 @@ vim.g.rustaceanvim = function()
         },
     }
 end
+
+-- local function toggle_profile()
+--     -- local should_profile = os.getenv 'NVIM_PROFILE'
+--     require('profile').instrument_autocmds()
+--     -- if should_profile:lower():match '^start' then
+--     --     require('profile').start '*'
+--     -- else
+--     --     require('profile').instrument '*'
+--     -- end
+--     require('profile').instrument '*'
+--
+--     local prof = require 'profile'
+--     if prof.is_recording() then
+--         prof.stop()
+--         vim.ui.input({ prompt = 'Save profile to:', completion = 'file', default = 'profile.json' }, function(filename)
+--             if filename then
+--                 prof.export(filename)
+--                 vim.notify(string.format('Wrote %s', filename))
+--             end
+--         end)
+--     else
+--         prof.start '*'
+--     end
+-- end
+-- vim.keymap.set('', '<f1>', toggle_profile)

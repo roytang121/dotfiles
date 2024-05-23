@@ -1,10 +1,5 @@
 return {
     {
-        'folke/neodev.nvim',
-        event = 'VeryLazy',
-        opts = {},
-    },
-    {
         'tpope/vim-sleuth',
         event = 'BufRead',
     }, -- Detect tabstop and shiftwidth automatically
@@ -171,7 +166,7 @@ return {
                             documentation = true,
                         },
                     },
-                    nvimtree = true,
+                    nvimtree = false,
                     treesitter = true,
                     mini = true,
                 },
@@ -236,6 +231,7 @@ return {
             require 'config.treesitter'
         end,
     },
+    { 'stevearc/profile.nvim' },
     -- {
     --     'williamboman/mason-lspconfig.nvim',
     --     dependencies = {
@@ -250,17 +246,21 @@ return {
     -- },
     {
         'neovim/nvim-lspconfig',
-        event = { 'BufReadPre', 'BufNewFile' },
+        -- event = { 'BufReadPre', 'BufNewFile' },
+        -- event = 'VeryLazy',
         dependencies = {
             'hrsh7th/cmp-nvim-lsp',
-            'hrsh7th/cmp-buffer',
+            -- 'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-path',
-            'hrsh7th/cmp-cmdline',
+            -- 'hrsh7th/cmp-cmdline',
             'hrsh7th/nvim-cmp',
             'saadparwaiz1/cmp_luasnip',
             'L3MON4D3/LuaSnip',
             'rafamadriz/friendly-snippets',
             { 'j-hui/fidget.nvim', opts = {} },
+            -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
+            -- used for completion, annotations and signatures of Neovim apis
+            { 'folke/neodev.nvim', opts = {} },
             -- java
             --'mfussenegger/nvim-jdtls',
         },
@@ -269,21 +269,6 @@ return {
         },
         config = function()
             require 'config.lspconfig'
-        end,
-    },
-    {
-        'mfussenegger/nvim-dap',
-        event = 'VeryLazy',
-        dependencies = {
-            'rcarriga/nvim-dap-ui',
-            'nvim-neotest/nvim-nio',
-            -- 'williamboman/mason.nvim',
-            -- 'jay-babu/mason-nvim-dap.nvim',
-            -- own debuggers
-            'mfussenegger/nvim-dap-python',
-        },
-        config = function()
-            require 'config.nvim-dap'
         end,
     },
     {
@@ -353,10 +338,6 @@ return {
             },
         },
     },
-    {
-        'tenfyzhong/autoflake.vim',
-        event = 'VeryLazy',
-    },
     -- gits
     {
         'tpope/vim-fugitive',
@@ -397,6 +378,17 @@ return {
         event = 'VeryLazy',
         cnofig = function()
             require 'config.copilot'
+        end,
+    },
+    {
+        'Exafunction/codeium.nvim',
+        enabled = false,
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+            'hrsh7th/nvim-cmp',
+        },
+        config = function()
+            require('codeium').setup {}
         end,
     },
     {
