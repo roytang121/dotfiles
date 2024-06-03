@@ -13,7 +13,7 @@ cmp.setup {
     },
     mapping = cmp.mapping.preset.insert {
         ['<C-u>'] = cmp.mapping.scroll_docs(-4), -- Up
-        ['<C-d>'] = cmp.mapping.scroll_docs(4), -- Down
+        ['<C-d>'] = cmp.mapping.scroll_docs(4),  -- Down
         -- C-b (back) C-f (forward) for snippet placeholder navigation.
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<CR>'] = cmp.mapping.confirm {
@@ -96,8 +96,9 @@ lspconfig.pyright.setup {
         -- nnoremap <silent> <leader>dn :lua require('dap-python').test_method()<CR>
         -- nnoremap <silent> <leader>df :lua require('dap-python').test_class()<CR>
         -- vnoremap <silent> <leader>ds <ESC>:lua require('dap-python').debug_selection()<CR>
-        vim.keymap.set('n', '<leader>dm', require('dap-python').test_method, bufopts)
-        vim.keymap.set('n', '<leader>dc', require('dap-python').test_class, bufopts)
+        --
+        -- vim.keymap.set('n', '<leader>dm', require('dap-python').test_method, bufopts)
+        -- vim.keymap.set('n', '<leader>dc', require('dap-python').test_class, bufopts)
     end,
 }
 lspconfig.tsserver.setup {}
