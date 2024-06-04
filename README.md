@@ -7,4 +7,7 @@
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
-
+### screen dpi
+```sh
+xrdb ~/.Xresources
+```
