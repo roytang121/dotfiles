@@ -122,7 +122,7 @@ return {
                     {
                         'filename',
                         file_status = true, -- displays file status (readonly status, modified status)
-                        path = 1, -- 0 = just filename, 1 = relative path, 2 = absolute path
+                        path = 1,           -- 0 = just filename, 1 = relative path, 2 = absolute path
                     },
                 },
             },
@@ -320,7 +320,7 @@ return {
                 -- Disable "format_on_save lsp_fallback" for languages that don't
                 -- have a well standardized coding style. You can add additional
                 -- languages here or re-enable it for the disabled ones.
-                local disable_filetypes = { c = true, cpp = true }
+                local disable_filetypes = { c = true, cpp = true, python = true }
                 return {
                     timeout_ms = 500,
                     lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
@@ -330,7 +330,7 @@ return {
                 lua = { 'stylua' },
                 rust = { 'rustfmt' },
                 -- Conform can also run multiple formatters sequentially
-                python = { 'ruff_format' },
+                -- python = { 'ruff_format' },
                 --
                 -- You can use a sub-list to tell conform to run *until* a formatter
                 -- is found.
@@ -365,7 +365,7 @@ return {
         enabled = false,
         opts = {},
     },
-    { -- Useful plugin to show you pending keybinds.
+    {                       -- Useful plugin to show you pending keybinds.
         'folke/which-key.nvim',
         event = 'VeryLazy', -- Sets the loading event to 'VeryLazy'
         config = function() -- This is the function that runs, AFTER loading
