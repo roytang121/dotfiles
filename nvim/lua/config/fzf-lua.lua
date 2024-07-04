@@ -1,5 +1,5 @@
-local builtin = require("fzf-lua")
-builtin.setup { "max-perf" }
+local builtin = require 'fzf-lua'
+builtin.setup { 'max-perf' }
 
 builtin.register_ui_select()
 
@@ -13,7 +13,7 @@ vim.keymap.set('n', '<leader>sd', builtin.diagnostics_workspace, { desc = '[S]ea
 vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
 vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
 vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
-vim.keymap.set('n', '<leader>fw', builtin.lsp_workspace_symbols, { desc = 'workspace symbols' })
+vim.keymap.set('n', '<leader>fw', builtin.lsp_live_workspace_symbols, { desc = 'workspace symbols' })
 vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, { desc = 'document symbols' })
 vim.keymap.set('n', '<leader>co', builtin.colorschemes, { desc = 'change colorscheme' })
 vim.keymap.set('n', '<C-p>', builtin.commands, { desc = 'commanads' })

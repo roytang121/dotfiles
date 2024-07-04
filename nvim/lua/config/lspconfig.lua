@@ -13,7 +13,7 @@ cmp.setup {
     },
     mapping = cmp.mapping.preset.insert {
         ['<C-u>'] = cmp.mapping.scroll_docs(-4), -- Up
-        ['<C-d>'] = cmp.mapping.scroll_docs(4),  -- Down
+        ['<C-d>'] = cmp.mapping.scroll_docs(4), -- Down
         -- C-b (back) C-f (forward) for snippet placeholder navigation.
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<CR>'] = cmp.mapping.confirm {
@@ -73,8 +73,8 @@ local lspconfig = require 'lspconfig'
 --
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
 -- local servers = { "clangd", "rust_analyzer", "pyright", "tsserver", "marksman", "lua_ls" }
-local servers = { 'clangd', 'pyright', 'tsserver', 'marksman', 'lua_ls' }
-for _, lsp in ipairs(servers) do
+local ez_setup = { 'clangd', 'tsserver', 'pyright' }
+for _, lsp in ipairs(ez_setup) do
     lspconfig[lsp].setup {
         -- on_attach = my_custom_on_attach,
         on_attach = function(client, bufnr)
@@ -90,29 +90,12 @@ for _, lsp in ipairs(servers) do
 end
 
 -- Setup language servers.
-lspconfig.pyright.setup {
-    on_attach = function(client, bufnr)
-        local bufopts = { noremap = true, silent = true, buffer = bufnr }
-        -- nnoremap <silent> <leader>dn :lua require('dap-python').test_method()<CR>
-        -- nnoremap <silent> <leader>df :lua require('dap-python').test_class()<CR>
-        -- vnoremap <silent> <leader>ds <ESC>:lua require('dap-python').debug_selection()<CR>
-        --
-        -- vim.keymap.set('n', '<leader>dm', require('dap-python').test_method, bufopts)
-        -- vim.keymap.set('n', '<leader>dc', require('dap-python').test_class, bufopts)
-    end,
-}
-lspconfig.tsserver.setup {}
--- lspconfig.rust_analyzer.setup({
--- 	-- Server-specific settings. See `:help lspconfig-setup`
--- 	settings = {
--- 		["rust-analyzer"] = {},
--- 	},
--- })
 lspconfig.marksman.setup {}
 lspconfig.lua_ls.setup {
     -- cmd = {...},
     -- filetypes { ...},
     -- capabilities = {},
+    capabilities = capabilities,
     settings = {
         Lua = {
             runtime = { version = 'LuaJIT' },
