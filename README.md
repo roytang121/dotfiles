@@ -17,6 +17,11 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```sh
 xrdb ~/.Xresources
 ```
+### remap key
+```sh
+# ~/.xprofile
+setxkbmap -option ctrl:swapcaps
+```
 
 ### gnome
 ```sh
