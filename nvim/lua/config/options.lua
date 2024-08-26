@@ -123,3 +123,13 @@ vim.api.nvim_set_keymap('i', '<C-J>', 'copilot#Accept("<CR>")', { silent = true,
 
 -- vim.opt.cmdheight = 0
 -- vim.opt.colorcolumn = "80"
+
+-- Function to check if a command is executable
+local function executable(cmd)
+    return vim.fn.executable(cmd) > 0
+end
+
+-- Set grepprg based on the availability of ripgrep
+if executable('rg') then
+    vim.o.grepprg = 'rg --vimgrep --no-heading --smart-case'
+end
