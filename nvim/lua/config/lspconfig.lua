@@ -6,6 +6,10 @@ luasnip.config.setup {}
 -- nvim-cmp setup
 local cmp = require 'cmp'
 cmp.setup {
+    performance = {
+        debounce = 0, -- default is 60ms
+        throttle = 0, -- default is 30ms
+    },
     snippet = {
         expand = function(args)
             luasnip.lsp_expand(args.body)

@@ -14,7 +14,6 @@ return {
     {
         'echasnovski/mini.nvim',
         event = 'VeryLazy',
-        version = false,
         config = function()
             require 'config.mini'
         end,
@@ -58,46 +57,10 @@ return {
     {
         'ibhagwan/fzf-lua',
         -- event = 'VimEnter',
-        -- optional for icon support
-        -- dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
             -- calling `setup` is optional for customization
             -- require("fzf-lua").setup({ "max-perf" })
             require 'config.fzf-lua'
-        end,
-    },
-    {
-        'nvim-telescope/telescope.nvim',
-        event = 'VimEnter',
-        enabled = false,
-        dependencies = {
-            'nvim-lua/plenary.nvim',
-            { -- If encountering errors, see telescope-fzf-native README for installation instructions
-                'nvim-telescope/telescope-fzf-native.nvim',
-
-                -- `build` is used to run some command when the plugin is installed/updated.
-                -- This is only run then, not every time Neovim starts up.
-                build = 'make',
-
-                -- `cond` is a condition used to determine whether this plugin should be
-                -- installed and loaded.
-                cond = function()
-                    return vim.fn.executable 'make' == 1
-                end,
-            },
-            { 'nvim-telescope/telescope-ui-select.nvim' },
-        },
-        config = function()
-            require 'config.telescope_setup'
-        end,
-        cmd = 'Telescope',
-    },
-    {
-        'akinsho/toggleterm.nvim',
-        version = '*',
-        event = 'VeryLazy',
-        config = function()
-            require 'config.toggleterm'
         end,
     },
     {
@@ -122,24 +85,16 @@ return {
                     {
                         'filename',
                         file_status = true, -- displays file status (readonly status, modified status)
-                        path = 1,           -- 0 = just filename, 1 = relative path, 2 = absolute path
+                        path = 1, -- 0 = just filename, 1 = relative path, 2 = absolute path
                     },
                 },
             },
         },
     },
     {
-        'akinsho/bufferline.nvim',
-        enabled = false,
-        event = 'VeryLazy',
-        version = '*',
-        dependencies = 'nvim-tree/nvim-web-devicons',
-        opts = {},
-    },
-    {
         -- Add indentation guides even on blank lines
         'lukas-reineke/indent-blankline.nvim',
-        event = 'VeryLazy',
+        -- event = 'VeryLazy',
         main = 'ibl',
         -- Enable `lukas-reineke/indent-blankline.nvim`
         -- See `:help indent_blankline.txt`
@@ -214,7 +169,7 @@ return {
         'stevearc/oil.nvim',
         -- event = 'VeryLazy',
         -- Optional dependencies
-        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        dependencies = { { 'echasnovski/mini.icons', opts = {} } },
         config = function()
             require 'config.oil'
         end,
@@ -232,18 +187,6 @@ return {
         end,
     },
     { 'stevearc/profile.nvim' },
-    -- {
-    --     'williamboman/mason-lspconfig.nvim',
-    --     dependencies = {
-    --         {
-    --             'williamboman/mason.nvim',
-    --             config = function()
-    --                 require 'config.mason'
-    --             end,
-    --         },
-    --     },
-    --     opts = {},
-    -- },
     {
         'neovim/nvim-lspconfig',
         -- event = { 'BufReadPre', 'BufNewFile' },
@@ -253,14 +196,15 @@ return {
             -- 'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-path',
             -- 'hrsh7th/cmp-cmdline',
-            'hrsh7th/nvim-cmp',
+            -- reference: https://www.reddit.com/r/neovim/comments/1f1rxtx/share_a_tip_to_improve_your_experience_in_nvimcmp/?share_id=H9dwmbccXBrWBey1ITaY6&utm_content=1&utm_medium=ios_app&utm_name=ioscss&utm_source=share&utm_term=1
+            { 'yioneko/nvim-cmp', branch = 'perf' },
             'saadparwaiz1/cmp_luasnip',
             'L3MON4D3/LuaSnip',
             'rafamadriz/friendly-snippets',
             { 'j-hui/fidget.nvim', opts = {} },
             -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
             -- used for completion, annotations and signatures of Neovim apis
-            { 'folke/neodev.nvim', opts = {} },
+            -- { 'folke/neodev.nvim', opts = {} },
             -- java
             --'mfussenegger/nvim-jdtls',
         },
@@ -286,7 +230,7 @@ return {
     },
     {
         'mrcjkb/rustaceanvim',
-        version = '^4', -- Recommended
+        version = '^5', -- Recommended
         lazy = false,
         ft = { 'rust' },
         config = function()
@@ -364,32 +308,6 @@ return {
         event = 'VeryLazy',
         enabled = false,
         opts = {},
-    },
-    {                       -- Useful plugin to show you pending keybinds.
-        'folke/which-key.nvim',
-        event = 'VeryLazy', -- Sets the loading event to 'VeryLazy'
-        config = function() -- This is the function that runs, AFTER loading
-            require 'config.which-key'
-        end,
-    },
-    {
-        'github/copilot.vim',
-        enabled = false,
-        event = 'VeryLazy',
-        cnofig = function()
-            require 'config.copilot'
-        end,
-    },
-    {
-        'Exafunction/codeium.nvim',
-        enabled = false,
-        dependencies = {
-            'nvim-lua/plenary.nvim',
-            'hrsh7th/nvim-cmp',
-        },
-        config = function()
-            require('codeium').setup {}
-        end,
     },
     {
         'folke/todo-comments.nvim',
