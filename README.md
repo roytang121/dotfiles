@@ -27,3 +27,22 @@ setxkbmap -option ctrl:swapcaps
 ```sh
 env XDG_CURRENT_DESKTOP=GNOME gnome-control-center
 ```
+
+### Disable TLP USB Power Saving
+1. **Install TLP
+```bash
+sudo apt install tlp
+```
+2. **Open the TLP configuration file**:
+```bash
+sudo nano /etc/tlp.conf
+3. **Uncomment and modify following items
+```bash
+USB_AUTOSUSPEND=0
+USB_BLACKLIST_BTUSB=1
+```
+4. **Save the file and restart TLP:**
+```bash
+sudo systemctl restart tlp
+```
+
