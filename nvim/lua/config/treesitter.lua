@@ -1,9 +1,9 @@
 require('nvim-treesitter.configs').setup {
     auto_install = true,
     highlight = {
-        enable = { 'python', 'lua', 'rust' },
+        enable = true,
         additional_vim_regex_highlighting = false,
-        disable = { 'log', 'yml', 'yaml', 'json' },
+        disable = { 'log', 'yml', 'yaml', 'json', 'rust' },
     },
     indent = { enable = false },
     refactor = {
