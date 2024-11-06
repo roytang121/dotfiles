@@ -1,5 +1,9 @@
 local builtin = require 'fzf-lua'
-builtin.setup { 'max-perf' }
+builtin.setup { 'max-perf', winopts = {
+    preview = {
+        layout = 'vertical',
+    },
+} }
 
 builtin.register_ui_select()
 
