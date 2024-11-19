@@ -17,7 +17,7 @@ cmp.setup {
     },
     mapping = cmp.mapping.preset.insert {
         ['<C-u>'] = cmp.mapping.scroll_docs(-4), -- Up
-        ['<C-d>'] = cmp.mapping.scroll_docs(4),  -- Down
+        ['<C-d>'] = cmp.mapping.scroll_docs(4), -- Down
         -- C-b (back) C-f (forward) for snippet placeholder navigation.
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<CR>'] = cmp.mapping.confirm {
@@ -120,6 +120,20 @@ lspconfig.lua_ls.setup {
             -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
             -- diagnostics = { disable = { 'missing-fields' } },
         },
+    },
+}
+
+-- some cosmetic patches to fix the floating window border
+-- https://gist.github.com/VonHeikemen/8fc2aa6da030757a5612393d0ae060bd
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
+
+vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' })
+
+vim.diagnostic.config {
+    severity_sort = true,
+    float = {
+        border = 'rounded',
+        source = 'always',
     },
 }
 
