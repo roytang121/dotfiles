@@ -46,3 +46,23 @@ USB_BLACKLIST_BTUSB=1
 sudo systemctl restart tlp
 ```
 
+### perf mode
+```
+# WARNING: Kernel address maps (/proc/{kallsyms,modules}) are restricted,
+# check /proc/sys/kernel/kptr_restrict.
+
+sudo sysctl -w kernel.kptr_restrict=0
+
+# The current value is 3:
+# -1: Allow use of (almost) all events by all users
+# Ignore mlock limit after perf_event_mlock_kb without CAP_IPC_LOCK
+# >= 0: Disallow ftrace function tracepoint by users without CAP_SYS_ADMIN
+# Disallow raw tracepoint access by users without CAP_SYS_ADMIN
+# >= 1: Disallow CPU event access by users without CAP_SYS_ADMIN
+# >= 2: Disallow kernel profiling by users without CAP_SYS_ADMIN
+
+sudo sysctl -w kernel.perf_event_paranoid=-1
+
+# reload
+sysctl -p /etc/sysctl.conf
+```
