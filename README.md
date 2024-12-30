@@ -49,7 +49,8 @@ sudo systemctl restart tlp
 ### perf mode
 ```
 # WARNING: Kernel address maps (/proc/{kallsyms,modules}) are restricted,
-# check /proc/sys/kernel/kptr_restrict.
+# cat /proc/sys/kernel/kptr_restrict
+# cat /proc/sys/kernel/perf_event_paranoid
 
 sudo sysctl -w kernel.kptr_restrict=0
 
