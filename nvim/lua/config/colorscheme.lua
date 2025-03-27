@@ -6,5 +6,4 @@ vim.opt.background = 'dark'
 -- vim.cmd [[colorscheme tokyonight]]
 -- vim.cmd [[colorscheme catppuccin-frappe]]
 -- cmd [[colorscheme base16-gruvbox-light-hard]]
-vim.cmd [[colorscheme kanagawa]]
-
+vim.cmd [[colorscheme default]]

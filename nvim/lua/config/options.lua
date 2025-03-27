@@ -133,3 +133,5 @@ end
 if executable('rg') then
     vim.o.grepprg = 'rg --vimgrep --no-heading --smart-case'
 end
+
+vim.o.winborder = 'rounded'

@@ -4,28 +4,46 @@ return {
         event = 'BufRead',
     }, -- Detect tabstop and shiftwidth automatically
     {
-        'numToStr/Comment.nvim',
-        enabled = function()
-            -- disabled since neovim has builtin comment in nightly build
-            return not vim.fn.has 'nvim-0.10'
-        end,
-        opts = {},
-    },
-    {
         'echasnovski/mini.nvim',
         event = 'VeryLazy',
         config = function()
             require 'config.mini'
         end,
     },
+    --    {
+    --        "folke/snacks.nvim",
+    --        priority = 1000,
+    --        lazy = false,
+    --        ---@type snacks.Config
+    --        opts = {
+    --            bigfile = { enabled = true },
+    --            dashboard = { enabled = true },
+    --            explorer = { enabled = true },
+    --            indent = { enabled = true },
+    --            input = { enabled = true },
+    --            notifier = {
+    --                enabled = true,
+    --                timeout = 3000,
+    --            },
+    --            picker = { enabled = true },
+    --            quickfile = { enabled = true },
+    --            scope = { enabled = true },
+    --            scroll = { enabled = true },
+    --            statuscolumn = { enabled = true },
+    --            words = { enabled = true },
+    --            styles = {
+    --                notification = {
+    --                    -- wo = { wrap = true } -- Wrap notifications
+    --                }
+    --            }
+    --        }
+    --    },
     {
         'windwp/nvim-autopairs',
-        event = 'InsertEnter',
-        config = function()
-            require 'config.autopairs'
-        end,
+        event = "InsertEnter",
+        config = true
         -- use opts = {} for passing setup options
-        -- this is equalent to setup({}) function
+        -- this is equivalent to setup({}) function
     },
     {
         'kevinhwang91/nvim-ufo',
@@ -34,25 +52,6 @@ return {
         config = function()
             require 'config.ufo'
         end,
-    },
-    {
-        'folke/noice.nvim',
-        event = 'VeryLazy',
-        enabled = false,
-        opts = {
-            -- add any options here
-        },
-        config = function()
-            require 'config.noice'
-        end,
-        dependencies = {
-            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-            'MunifTanjim/nui.nvim',
-            -- OPTIONAL:
-            --   `nvim-notify` is only needed, if you want to use the notification view.
-            --   If not available, we use `mini` as the fallback
-            -- "rcarriga/nvim-notify",
-        },
     },
     {
         'ibhagwan/fzf-lua',
@@ -85,7 +84,7 @@ return {
                     {
                         'filename',
                         file_status = true, -- displays file status (readonly status, modified status)
-                        path = 1, -- 0 = just filename, 1 = relative path, 2 = absolute path
+                        path = 1,           -- 0 = just filename, 1 = relative path, 2 = absolute path
                     },
                 },
             },
@@ -160,6 +159,7 @@ return {
             },
         },
     },
+    { "rose-pine/neovim",     name = "rose-pine" },
     {
         'metalelf0/jellybeans-nvim',
         event = 'VeryLazy',
@@ -187,33 +187,24 @@ return {
         end,
     },
     { 'stevearc/profile.nvim' },
+    { 'j-hui/fidget.nvim' },
     {
-        'neovim/nvim-lspconfig',
-        -- event = { 'BufReadPre', 'BufNewFile' },
-        -- event = 'VeryLazy',
-        dependencies = {
-            'hrsh7th/cmp-nvim-lsp',
-            -- 'hrsh7th/cmp-buffer',
-            'hrsh7th/cmp-path',
-            -- 'hrsh7th/cmp-cmdline',
-            -- reference: https://www.reddit.com/r/neovim/comments/1f1rxtx/share_a_tip_to_improve_your_experience_in_nvimcmp/?share_id=H9dwmbccXBrWBey1ITaY6&utm_content=1&utm_medium=ios_app&utm_name=ioscss&utm_source=share&utm_term=1
-            { 'yioneko/nvim-cmp', branch = 'perf' },
-            'saadparwaiz1/cmp_luasnip',
-            'L3MON4D3/LuaSnip',
-            'rafamadriz/friendly-snippets',
-            { 'j-hui/fidget.nvim', opts = {} },
-            -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
-            -- used for completion, annotations and signatures of Neovim apis
-            -- { 'folke/neodev.nvim', opts = {} },
-            -- java
-            --'mfussenegger/nvim-jdtls',
-        },
-        opts = {
-            inlay_hints = { enabled = true },
-        },
+        'saghen/blink.cmp',
+        -- optional: provides snippets for the snippet source
+        dependencies = { 'rafamadriz/friendly-snippets' },
+
+        -- use a release tag to download pre-built binaries
+        version = '1.*',
+        -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
+        -- build = 'cargo build --release',
+        -- If you use nix, you can build from source using latest nightly rust with:
+        -- build = 'nix run .#build-plugin',
+
         config = function()
-            require 'config.lspconfig'
+            require 'config.blink'
         end,
+
+        opts_extend = { "sources.default" }
     },
     {
         'nvim-neotest/neotest',
@@ -237,13 +228,6 @@ return {
             require 'config.rustaceanvim'
         end,
     },
-    -- {
-    --     'mhartington/formatter.nvim',
-    --     event = 'VeryLazy',
-    --     config = function()
-    --         require 'config.formatter'
-    --     end,
-    -- },
     { -- Autoformat
         'stevearc/conform.nvim',
         lazy = false,
@@ -301,12 +285,6 @@ return {
     {
         'sindrets/diffview.nvim',
         event = 'VeryLazy',
-        opts = {},
-    },
-    {
-        'stevearc/dressing.nvim',
-        event = 'VeryLazy',
-        enabled = false,
         opts = {},
     },
     {
