@@ -157,6 +157,7 @@ return {
         'nvim-treesitter/nvim-treesitter',
         event = 'BufRead',
         build = ':TSUpdate',
+        main = 'nvim-treesitter.configs',
         enabled = true,
         dependencies = {
             -- 'nvim-treesitter/nvim-treesitter-textobjects',
@@ -166,7 +167,7 @@ return {
         end,
     },
     { 'stevearc/profile.nvim' },
-    { 'j-hui/fidget.nvim' },
+    { 'j-hui/fidget.nvim',    opts = {} },
     {
         'saghen/blink.cmp',
         -- optional: provides snippets for the snippet source
