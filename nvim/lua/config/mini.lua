@@ -1,7 +1,12 @@
 -- require("mini.basics").setup()
 -- require("mini.starter").setup()
 -- require("mini.comment").setup()
--- require("mini.statusline").setup()
+require("mini.statusline").setup {
+    use_icons = vim.g.have_nerd_font,
+    session_location = function()
+        return '%2l:%-2v'
+    end
+}
 -- require("mini.tabline").setup({
 -- 	-- Whether to show file icons (requires 'nvim-tree/nvim-web-devicons')
 -- 	show_icons = true,
