@@ -129,7 +129,7 @@ return {
     {
         'rebelot/kanagawa.nvim',
         opts = {
-            transparent = true,
+            transparent = false,
             colors = { -- add/modify theme and palette colors
                 palette = {
                     waveBlue1 = '#2D4F67',
@@ -223,7 +223,7 @@ return {
             },
         },
         opts = {
-            notify_on_error = false,
+            notify_on_error = true,
             format_on_save = function(bufnr)
                 -- Disable "format_on_save lsp_fallback" for languages that don't
                 -- have a well standardized coding style. You can add additional
@@ -237,6 +237,7 @@ return {
             formatters_by_ft = {
                 lua = { 'stylua' },
                 rust = { 'rustfmt' },
+                markdown = { 'mdformat' },
                 -- Conform can also run multiple formatters sequentially
                 -- python = { 'ruff_format' },
                 --

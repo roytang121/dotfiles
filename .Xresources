@@ -1,2 +1,2 @@
-*dpi: 80
-Xft.dip: 80
+/**dpi: 80*/
+/*Xft.dip: 80*/
