@@ -40,8 +40,8 @@ return {
     --    },
     {
         'windwp/nvim-autopairs',
-        event = "InsertEnter",
-        config = true
+        event = 'InsertEnter',
+        config = true,
         -- use opts = {} for passing setup options
         -- this is equivalent to setup({}) function
     },
@@ -84,6 +84,7 @@ return {
         },
     },
     -- colorschemes
+    { 'EdenEast/nightfox.nvim' },
     {
         'catppuccin/nvim',
         name = 'catppuccin',
@@ -138,7 +139,7 @@ return {
             },
         },
     },
-    { "rose-pine/neovim",     name = "rose-pine" },
+    { 'rose-pine/neovim', name = 'rose-pine' },
     {
         'metalelf0/jellybeans-nvim',
         event = 'VeryLazy',
@@ -167,7 +168,7 @@ return {
         end,
     },
     { 'stevearc/profile.nvim' },
-    { 'j-hui/fidget.nvim',    opts = {} },
+    { 'j-hui/fidget.nvim', opts = {} },
     {
         'saghen/blink.cmp',
         -- optional: provides snippets for the snippet source
@@ -184,7 +185,7 @@ return {
             require 'config.blink'
         end,
 
-        opts_extend = { "sources.default" }
+        opts_extend = { 'sources.default' },
     },
     {
         'nvim-neotest/neotest',

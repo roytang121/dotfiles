@@ -26,6 +26,14 @@ vim.g.rustaceanvim = function()
         server = {
             on_attach = function(client, bufnr)
                 -- you can also put keymaps in here
+                vim.keymap.set('n', '<leader>a', function()
+                    vim.cmd.RustLsp 'codeAction' -- supports rust-analyzer's grouping
+                    -- or vim.lsp.buf.codeAction() if you don't want grouping.
+                end, { silent = true, buffer = bufnr })
+
+                vim.keymap.set('n', 'K', function()
+                    vim.cmd.RustLsp { 'hover', 'actions' }
+                end, { silent = true, buffer = bufnr })
 
                 -- only do inlay hint with rust-analyzer if supported
                 if client.server_capabilities.inlayHintProvider then
