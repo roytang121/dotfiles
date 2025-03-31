@@ -127,6 +127,7 @@ return {
             transparent = false,
         },
     },
+    { 'sainnhe/everforest' },
     {
         'rebelot/kanagawa.nvim',
         opts = {
