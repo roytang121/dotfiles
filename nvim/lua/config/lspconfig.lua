@@ -66,6 +66,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
             vim.lsp.buf.format { async = true }
         end, opts)
 
+        local bufnr = ev.buf
+        local client = vim.lsp.get_client_by_id(ev.data.client_id)
+        if client and client.server_capabilities.inlayHintProvider then
+            vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+        end
+
         -- Change border of documentation hover window, See https://github.com/neovim/neovim/pull/13998.
         -- disable to let noice take over it
         -- vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
