@@ -1,5 +1,5 @@
 return {
-    cmd = { 'pyright' },
+    cmd = { 'pyright-langserver', '--stdio' },
     filetypes = { "python" },
     root_markers = {
         "pyproject.toml",
@@ -14,6 +14,7 @@ return {
             analysis = {
                 autoSearchPaths = true,
                 useLibraryCodeForTypes = true,
+                diagnosticMode = 'openFilesOnly',
             },
         },
     },
