@@ -44,10 +44,10 @@ vim.g.rustaceanvim = function()
                 -- rust-analyzer language server configuration
                 ['rust-analyzer'] = {
                     cachePriming = {
-                        enable = true,
+                        enable = false,
                     },
                     checkOnSave = {
-                        enable = true,
+                        enable = false,
                     },
                 },
             },
