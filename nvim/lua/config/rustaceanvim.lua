@@ -47,7 +47,7 @@ vim.g.rustaceanvim = function()
                         enable = false,
                     },
                     checkOnSave = {
-                        enable = false,
+                        enable = true,
                     },
                 },
             },
