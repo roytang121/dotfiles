@@ -1,43 +1,28 @@
 return {
     {
+        'nvim-lualine/lualine.nvim',
+        config = function()
+            require('lualine').setup {
+                options = {
+                    theme = 'jellybeans',
+                    section_separators = {},
+                    component_separators = {}
+                },
+            }
+        end,
+    },
+    {
         'tpope/vim-sleuth',
         event = 'BufRead',
     }, -- Detect tabstop and shiftwidth automatically
     {
-        'echasnovski/mini.nvim',
+        'tpope/vim-unimpaired',
         event = 'VeryLazy',
-        config = function()
-            require 'config.mini'
-        end,
     },
-    --    {
-    --        "folke/snacks.nvim",
-    --        priority = 1000,
-    --        lazy = false,
-    --        ---@type snacks.Config
-    --        opts = {
-    --            bigfile = { enabled = true },
-    --            dashboard = { enabled = true },
-    --            explorer = { enabled = true },
-    --            indent = { enabled = true },
-    --            input = { enabled = true },
-    --            notifier = {
-    --                enabled = true,
-    --                timeout = 3000,
-    --            },
-    --            picker = { enabled = true },
-    --            quickfile = { enabled = true },
-    --            scope = { enabled = true },
-    --            scroll = { enabled = true },
-    --            statuscolumn = { enabled = true },
-    --            words = { enabled = true },
-    --            styles = {
-    --                notification = {
-    --                    -- wo = { wrap = true } -- Wrap notifications
-    --                }
-    --            }
-    --        }
-    --    },
+    {
+        'tpope/vim-surround',
+        event = 'BufRead',
+    },
     {
         'windwp/nvim-autopairs',
         event = 'InsertEnter',
@@ -84,7 +69,6 @@ return {
         },
     },
     -- colorschemes
-    { 'EdenEast/nightfox.nvim' },
     {
         'catppuccin/nvim',
         name = 'catppuccin',
@@ -102,7 +86,6 @@ return {
                     },
                     nvimtree = false,
                     treesitter = true,
-                    mini = true,
                 },
                 floating_border = 'on',
                 transparent_background = true,
@@ -113,29 +96,13 @@ return {
         end,
     },
     {
-        'navarasu/onedark.nvim',
-        event = 'VeryLazy',
-        opts = {
-            style = 'darker',
-            transparent = true,
-        },
-    },
-    {
-        'folke/tokyonight.nvim',
-        event = 'VeryLazy',
-        opts = {
-            transparent = false,
-        },
-    },
-    { 'sainnhe/everforest' },
-    {
         'Mofiqul/vscode.nvim',
         opts = {
             -- Alternatively set style in setup
             -- style = 'light'
 
             -- Enable transparent background
-            transparent = true,
+            transparent = false,
 
             -- Enable italic comment
             italic_comments = true,
@@ -163,28 +130,10 @@ return {
         },
     },
     {
-        'rebelot/kanagawa.nvim',
-        opts = {
-            transparent = false,
-            colors = { -- add/modify theme and palette colors
-                palette = {
-                    waveBlue1 = '#2D4F67',
-                },
-                theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
-            },
-        },
-    },
-    { 'rose-pine/neovim', name = 'rose-pine' },
-    {
-        'metalelf0/jellybeans-nvim',
-        event = 'VeryLazy',
-        dependencies = { 'rktjmp/lush.nvim' },
-    },
-    {
         'stevearc/oil.nvim',
         -- event = 'VeryLazy',
         -- Optional dependencies
-        dependencies = { { 'echasnovski/mini.icons', opts = {} } },
+        -- dependencies = { { 'echasnovski/mini.icons', opts = {} } },
         config = function()
             require 'config.oil'
         end,
@@ -202,7 +151,6 @@ return {
             require 'config.treesitter'
         end,
     },
-    { 'stevearc/profile.nvim' },
     { 'j-hui/fidget.nvim', opts = {} },
     {
         'saghen/blink.cmp',
@@ -293,16 +241,16 @@ return {
         event = 'VeryLazy',
     },
     {
-        'lewis6991/gitsigns.nvim',
-        event = 'VeryLazy',
+        'airblade/vim-gitgutter',
         config = function()
-            require 'config.gitsigns'
-        end,
+        end
     },
     {
         'sindrets/diffview.nvim',
         event = 'VeryLazy',
-        opts = {},
+        opts = {
+            use_icons = false
+        },
     },
     {
         'folke/todo-comments.nvim',

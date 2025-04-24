@@ -1,12 +1,12 @@
 -- require("mini.basics").setup()
 -- require("mini.starter").setup()
 -- require("mini.comment").setup()
-require("mini.statusline").setup {
-    use_icons = vim.g.have_nerd_font,
-    session_location = function()
-        return '%2l:%-2v'
-    end
-}
+-- require("mini.statusline").setup {
+--     use_icons = vim.g.have_nerd_font,
+--     session_location = function()
+--         return '%2l:%-2v'
+--     end
+-- }
 -- require('mini.notify').setup()
 -- require("mini.tabline").setup({
 -- 	-- Whether to show file icons (requires 'nvim-tree/nvim-web-devicons')
@@ -36,7 +36,7 @@ require('mini.surround').setup()
 -- })
 -- require('mini.indentscope').gen_animation.none()
 
-require("mini.bracketed").setup()
+-- require("mini.bracketed").setup()
 -- require("mini.pairs").setup()
 
 -- Better Around/Inside textobjects
