@@ -243,6 +243,13 @@ return {
     {
         'airblade/vim-gitgutter',
         config = function()
+            vim.keymap.set("x", "<leader>gl", function()
+                local start_line = vim.fn.line("'<")
+                local end_line = vim.fn.line("'>")
+                local file = vim.fn.expand("%")
+                local cmd = string.format(":G log -p -L %d,%d:%s", start_line, end_line, file)
+                vim.cmd(cmd)
+            end, { desc = "Git log for selected lines" })
         end
     },
     {
