@@ -6,7 +6,16 @@ return {
                 options = {
                     theme = 'jellybeans',
                     section_separators = {},
-                    component_separators = {}
+                    component_separators = {},
+                },
+                sections = {
+                    lualine_c = {
+                        {
+                            'filename',
+                            file_status = true, -- displays file status (readonly status, modified status)
+                            path = 1, -- 0 = just filename, 1 = relative path, 2 = absolute path
+                        },
+                    },
                 },
             }
         end,
@@ -243,20 +252,20 @@ return {
     {
         'airblade/vim-gitgutter',
         config = function()
-            vim.keymap.set("x", "<leader>gl", function()
-                local start_line = vim.fn.line("'<")
-                local end_line = vim.fn.line("'>")
-                local file = vim.fn.expand("%:p")
-                local cmd = string.format(":G log -p -L %d,%d:%s", start_line, end_line, file)
+            vim.keymap.set('x', '<leader>gl', function()
+                local start_line = vim.fn.line "'<"
+                local end_line = vim.fn.line "'>"
+                local file = vim.fn.expand '%:p'
+                local cmd = string.format(':G log -p -L %d,%d:%s', start_line, end_line, file)
                 vim.cmd(cmd)
-            end, { desc = "Git log for selected lines" })
-        end
+            end, { desc = 'Git log for selected lines' })
+        end,
     },
     {
         'sindrets/diffview.nvim',
         event = 'VeryLazy',
         opts = {
-            use_icons = false
+            use_icons = false,
         },
     },
     {
