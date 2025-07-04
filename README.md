@@ -1,6 +1,11 @@
 # dotfiles
 ## Installation
 
+### brew
+```sh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
 ### vimplug
 ```sh
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
@@ -13,10 +18,17 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
 ## Linux
+### default packages
+```
+sudo apt update
+sudo apt install htop curl i3 tmux vim build-essential rofi pulseaudio xclip
+```
+
 ### screen dpi
 ```sh
 xrdb ~/.Xresources
 ```
+
 ### remap key
 ```sh
 # ~/.xprofile
