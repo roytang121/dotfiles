@@ -202,15 +202,18 @@ gaps outer 4
 smart_gaps on
 smart_borders on
 
+# Launch Polybar
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+
 # Window colors
 # client.focused          #ff0080 #00ff00 #ff0080 #00ff00 #ff0080
 # client.unfocused        #1c1c1c #888888 #1c1c1c #888888 #1c1c1c
 # client.focused_inactive #5f00ff #ffcc00 #5f00ff #ffcc00 #5f00ff
 # client.urgent           #ff0000 #ffffff #ff0000 #ffffff #ff0000
-bar {
-    status_command i3status
-    position top
-    font pango:monospace 8
-    # tray_output none
-}
+# bar {
+#     status_command i3status
+#     position top
+#     font pango:monospace 8
+#     tray_output primary
+# }
 
