@@ -1,4 +1,4 @@
-vim.lsp.enable { 'lua_ls', 'pyright', 'marksman', 'clangd' }
+vim.lsp.enable { 'lua_ls', 'pyrefly', 'marksman', 'clangd' }
 
 vim.diagnostic.config {
     severity_sort = true,
