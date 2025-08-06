@@ -1,9 +1,18 @@
-local builtin = require 'fzf-lua'
-builtin.setup { 'max-perf', winopts = {
-    preview = {
-        layout = 'vertical',
+local builtin = require('fzf-lua')
+
+builtin.setup({
+    'max-perf',
+    winopts = {
+        preview = {
+            layout = 'vertical',
+        },
     },
-} }
+    keymap = {
+        fzf = {
+            ['ctrl-q'] = 'select-all+accept',
+        },
+    },
+})
 
 builtin.register_ui_select()
 
