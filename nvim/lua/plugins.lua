@@ -7,6 +7,7 @@ return {
                     theme = 'vscode',
                     section_separators = {},
                     component_separators = {},
+                    globalstatus = true,
                 },
                 sections = {
                     lualine_c = {
@@ -39,14 +40,14 @@ return {
         -- use opts = {} for passing setup options
         -- this is equivalent to setup({}) function
     },
-    {
-        'kevinhwang91/nvim-ufo',
-        enabled = true,
-        dependencies = { 'kevinhwang91/promise-async' },
-        config = function()
-            require 'config.ufo'
-        end,
-    },
+    -- {
+    --     'kevinhwang91/nvim-ufo',
+    --     enabled = true,
+    --     dependencies = { 'kevinhwang91/promise-async' },
+    --     config = function()
+    --         require 'config.ufo'
+    --     end,
+    -- },
     {
         'ibhagwan/fzf-lua',
         -- event = 'VimEnter',
@@ -180,19 +181,6 @@ return {
         opts_extend = { 'sources.default' },
     },
     {
-        'nvim-neotest/neotest',
-        event = 'VeryLazy',
-        dependencies = {
-            'nvim-lua/plenary.nvim',
-            'nvim-neotest/nvim-nio',
-            'antoinemadec/FixCursorHold.nvim',
-            'nvim-treesitter/nvim-treesitter',
-        },
-        config = function()
-            require 'config.neotest'
-        end,
-    },
-    {
         'mrcjkb/rustaceanvim',
         version = '^6', -- Recommended
         lazy = false,
@@ -245,10 +233,10 @@ return {
         'tpope/vim-fugitive',
         event = 'VeryLazy',
     },
-    {
-        'tpope/vim-rhubarb',
-        event = 'VeryLazy',
-    },
+    -- {
+    --     'tpope/vim-rhubarb',
+    --     event = 'VeryLazy',
+    -- },
     {
         'airblade/vim-gitgutter',
         config = function()

@@ -49,10 +49,10 @@ vim.g.rustaceanvim = function()
                     checkOnSave = {
                         enable = true,
                     },
-                    check = {
-                        command = "clippy", -- or "check"
-                        extraArgs = { "--all-features", "--", "--no-deps" },
-                    },
+                    -- check = {
+                    --     command = "clippy", -- or "check"
+                    --     extraArgs = { "--all-features", "--", "--no-deps" },
+                    -- },
                 },
             },
             dap = {
