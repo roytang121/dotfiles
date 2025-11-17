@@ -7,14 +7,14 @@ return {
                     theme = 'vscode',
                     section_separators = {},
                     component_separators = {},
-                    globalstatus = true,
+                    globalstatus = false,
                 },
                 sections = {
                     lualine_c = {
                         {
                             'filename',
                             file_status = true, -- displays file status (readonly status, modified status)
-                            path = 1, -- 0 = just filename, 1 = relative path, 2 = absolute path
+                            path = 1,           -- 0 = just filename, 1 = relative path, 2 = absolute path
                         },
                     },
                 },
@@ -65,19 +65,25 @@ return {
         end,
     },
     {
-        -- Add indentation guides even on blank lines
-        'lukas-reineke/indent-blankline.nvim',
-        -- event = 'VeryLazy',
-        main = 'ibl',
-        -- Enable `lukas-reineke/indent-blankline.nvim`
-        -- See `:help indent_blankline.txt`
-        opts = {
-            -- char = '┊',
-            -- show_trailing_blankline_indent = false,
-            -- show_current_context = true,
-            -- show_current_context_start = true,
-        },
+        'saghen/blink.indent',
+        config = function()
+            require('blink.indent').setup({})
+        end
     },
+    -- {
+    --     -- Add indentation guides even on blank lines
+    --     'lukas-reineke/indent-blankline.nvim',
+    --     -- event = 'VeryLazy',
+    --     main = 'ibl',
+    --     -- Enable `lukas-reineke/indent-blankline.nvim`
+    --     -- See `:help indent_blankline.txt`
+    --     opts = {
+    --         -- char = '┊',
+    --         -- show_trailing_blankline_indent = false,
+    --         -- show_current_context = true,
+    --         -- show_current_context_start = true,
+    --     },
+    -- },
     -- colorschemes
     {
         'catppuccin/nvim',
