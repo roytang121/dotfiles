@@ -116,11 +116,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     end,
 })
 
--- copilot settings override
-vim.g.copilot_assume_mapped = true
-vim.g.copilot_no_tab_map = true
-vim.api.nvim_set_keymap('i', '<C-J>', 'copilot#Accept("<CR>")', { silent = true, expr = true })
-
 -- vim.opt.cmdheight = 0
 -- vim.opt.colorcolumn = "80"
 

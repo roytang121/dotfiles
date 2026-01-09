@@ -1,2 +1,0 @@
--- vim options for copilot 
-
