@@ -206,10 +206,12 @@ smart_borders on
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # Window colors
-# client.focused          #ff0080 #00ff00 #ff0080 #00ff00 #ff0080
-# client.unfocused        #1c1c1c #888888 #1c1c1c #888888 #1c1c1c
-# client.focused_inactive #5f00ff #ffcc00 #5f00ff #ffcc00 #5f00ff
-# client.urgent           #ff0000 #ffffff #ff0000 #ffffff #ff0000
+# class                 border              background          text                indicator           child_border
+client.focused          #bbbbbb             #1e1e1e             #eeeeee             #bbbbbb             #bbbbbb
+client.unfocused        #333333             #1e1e1e             #888888             #333333             #333333
+client.focused_inactive #444444             #1e1e1e             #aaaaaa             #444444             #444444
+client.urgent           #ff5555             #ff5555             #eeeeee             #ff5555             #ff5555
+
 # bar {
 #     status_command i3status
 #     position top
