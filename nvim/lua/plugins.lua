@@ -62,8 +62,8 @@ return {
         end,
     },
     {
-            'Mofiqul/vscode.nvim',
-            opts = {
+        'Mofiqul/vscode.nvim',
+        opts = {
             -- Alternatively set style in setup
             -- style = 'light'
 
@@ -108,7 +108,7 @@ return {
         'nvim-treesitter/nvim-treesitter',
         event = 'BufRead',
         build = ':TSUpdate',
-        main = 'nvim-treesitter.configs',
+        branch = "main",
         enabled = true,
         dependencies = {
             -- 'nvim-treesitter/nvim-treesitter-textobjects',
