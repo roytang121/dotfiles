@@ -17,6 +17,11 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
+### rust-analyzer
+```sh
+rustup toolchain install nightly --component rust-analyzer-preview
+```
+
 ## Linux
 ### default packages
 ```

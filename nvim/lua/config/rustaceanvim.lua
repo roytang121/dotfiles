@@ -24,6 +24,15 @@ vim.g.rustaceanvim = function()
         },
         -- LSP configuration
         server = {
+            -- Use the nightly rust-analyzer from rustup, falling back to whatever
+            -- is on $PATH. Avoids hard-coding the host/arch-specific toolchain path.
+            cmd = function()
+                local ra = vim.fn.trim(vim.fn.system { 'rustup', 'which', '--toolchain', 'nightly', 'rust-analyzer' })
+                if vim.v.shell_error ~= 0 or ra == '' then
+                    ra = 'rust-analyzer'
+                end
+                return { ra }
+            end,
             on_attach = function(client, bufnr)
                 -- you can also put keymaps in here
                 vim.keymap.set('n', '<leader>a', function()
