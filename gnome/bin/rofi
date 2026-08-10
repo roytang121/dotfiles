@@ -1,0 +1,36 @@
+#!/bin/sh
+# Wrapper for /usr/local/bin/rofi (built from source, branch: next).
+#
+# GNOME's Mutter does not implement wlr-layer-shell, so rofi's Wayland backend
+# aborts outright. Falling back to XWayland with -x11 is not enough either:
+# rofi's default window is override-redirect, and Mutter never focuses an
+# override-redirect surface, so no key events are ever routed into XWayland.
+# The X11 keyboard grab succeeds but receives nothing -- the window renders and
+# cannot be typed into.
+#
+# -normal-window makes rofi a managed window that Mutter will focus, which is
+# the only input path GNOME offers. See source/xcb/view.c:743-752.
+#
+# On wlroots compositors (sway, Hyprland) none of this applies, so leave rofi
+# alone and let the native Wayland backend handle it.
+
+ROFI=/usr/local/bin/rofi
+
+case "$XDG_CURRENT_DESKTOP" in
+*GNOME*)
+	# Only on a Wayland session; a real X11 GNOME session needs no help.
+	if [ -n "$WAYLAND_DISPLAY" ]; then
+		# Respect an explicit window mode if the caller already chose one.
+		for arg in "$@"; do
+			case "$arg" in
+			-normal-window | -transient-window)
+				exec "$ROFI" "$@"
+				;;
+			esac
+		done
+		exec "$ROFI" -x11 -normal-window "$@"
+	fi
+	;;
+esac
+
+exec "$ROFI" "$@"

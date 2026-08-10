@@ -1,0 +1,5 @@
+[/]
+mru-sources=[('xkb', 'us'), ('ibus', 'table:cangjie3')]
+per-window=false
+sources=[('xkb', 'us'), ('ibus', 'table:cangjie3')]
+xkb-options=@as []

@@ -1,0 +1,7 @@
+[/]
+clock-format='12h'
+clock-show-date=true
+color-scheme='prefer-dark'
+enable-animations=false
+gtk-theme='Yaru-dark'
+icon-theme='Yaru'

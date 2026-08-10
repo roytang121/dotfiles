@@ -1,0 +1,8 @@
+[/]
+dynamic-workspaces=false
+edge-tiling=false
+overlay-key=''
+
+[keybindings]
+toggle-tiled-left=@as []
+toggle-tiled-right=@as []

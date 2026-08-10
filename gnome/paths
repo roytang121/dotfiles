@@ -1,0 +1,26 @@
+# dconf subtrees tracked in this repo, one path per line.
+# Blank lines and '#' comments are ignored.
+#
+# Keep this list narrow. Dumping all of '/' also captures volatile machine
+# state -- monitor layouts, window positions, recently-used lists, per-app
+# state -- which produces noisy diffs and is actively wrong to replay onto a
+# different machine.
+
+# Keybindings. Custom bindings (incl. Super+D -> rofi) live under
+# media-keys/custom-keybindings/, so this path captures them.
+/org/gnome/settings-daemon/plugins/media-keys/
+/org/gnome/desktop/wm/keybindings/
+/org/gnome/shell/keybindings/
+
+# Look and feel: theme, fonts, cursor, text scaling.
+/org/gnome/desktop/interface/
+
+# Keyboard layout and the ctrl:swapcaps style xkb options.
+/org/gnome/desktop/input-sources/
+
+# Mouse / touchpad / trackpoint behaviour.
+/org/gnome/desktop/peripherals/
+
+# Window focus, button layout, workspace behaviour.
+/org/gnome/desktop/wm/preferences/
+/org/gnome/mutter/
