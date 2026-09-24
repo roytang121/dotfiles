@@ -138,7 +138,7 @@ return {
     },
     {
         'mrcjkb/rustaceanvim',
-        version = '^6', -- Recommended
+        version = '^9', -- Neovim 0.12-compatible release line
         lazy = false,
         ft = { 'rust' },
         config = function()
